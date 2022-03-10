@@ -19,7 +19,7 @@ let
 var
     rect_collider: Rect_collider
     player: Player
-    gravity: float = 9.8*20f
+    gravity: float = 9.8*10f
     walls: array<Wall> 
     buttons: array<Button> 
     levels: array<Level>

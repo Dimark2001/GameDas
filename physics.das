@@ -19,15 +19,15 @@ def dir_collision(other: Rect_collider; player: Player)
     var pl_col = player.collider
     var down_offset, up_offset, right_offset, left_offset: float
     //down
-    if ((pl_col.bottomRightCorner.y >= other.topLeftCorner.y+offsetDU)
+    if ((pl_col.bottomRightCorner.y >= other.topLeftCorner.y-offsetDU)
     && (pl_col.topLeftCorner.y < other.topLeftCorner.y)
     && (pl_col.topLeftCorner.x < other.bottomRightCorner.x)
     && (pl_col.bottomRightCorner.x > other.topLeftCorner.x))
         down = true
-        down_offset = pl_col.bottomRightCorner.y - other.topLeftCorner.y
+        down_offset = pl_col.bottomRightCorner.y - other.topLeftCorner.y-offsetDU
     //up
     if ((pl_col.topLeftCorner.y <= other.bottomRightCorner.y)
-    && (pl_col.bottomRightCorner.y > other.bottomRightCorner.y)
+    && (pl_col.bottomRightCorner.y > other.bottomRightCorner.y+offsetDU)
     && (pl_col.bottomRightCorner.x > other.topLeftCorner.x)
     && (pl_col.topLeftCorner.x < other.bottomRightCorner.x))
         up = true
@@ -36,14 +36,14 @@ def dir_collision(other: Rect_collider; player: Player)
     if ((pl_col.bottomRightCorner.x >= other.topLeftCorner.x)
     && (pl_col.topLeftCorner.x < other.topLeftCorner.x)
     && (pl_col.bottomRightCorner.y > other.topLeftCorner.y+offsetRL)
-    && (pl_col.topLeftCorner.y < other.bottomRightCorner.y))
+    && (pl_col.topLeftCorner.y < other.bottomRightCorner.y-offsetRL))
         right = true
         right_offset = pl_col.bottomRightCorner.x - other.topLeftCorner.x
     //left
     if ((pl_col.topLeftCorner.x <= other.bottomRightCorner.x)
     && (pl_col.bottomRightCorner.x > other.bottomRightCorner.x)
     && (pl_col.bottomRightCorner.y > other.topLeftCorner.y+offsetRL)
-    && (pl_col.topLeftCorner.y < other.bottomRightCorner.y))
+    && (pl_col.topLeftCorner.y < other.bottomRightCorner.y-offsetRL))
         left = true
         left_offset = pl_col.topLeftCorner.x - other.bottomRightCorner.x
     var col : tuple<d:bool; u:bool; r:bool; l:bool; dof:float; uo:float; ro:float; lo:float>
@@ -65,7 +65,7 @@ def check_collisions(var walls: array<Wall>; player: Player)
         if is_collision(w.collider, player)
             w.collider.collision_for_player = true
             p_col = dir_collision(w.collider, player)
-            if p_col.d
+            if p_col.d //&& ((!all_col.u && !p_col.u) || ((all_col.r || p_col.r) && (all_col.l || p_col.l)))
                 all_col.d = true
                 all_col.dof = p_col.dof
             if p_col.u
@@ -77,6 +77,9 @@ def check_collisions(var walls: array<Wall>; player: Player)
             if p_col.l
                 all_col.l = true
                 all_col.lo = p_col.lo
+            if all_col.d && all_col.u
+                all_col.d = false
+                all_col.u = false
         else
             w.collider.collision_for_player = false
     return all_col;
@@ -118,20 +121,21 @@ def update_player(var player: Player; dt: float)
     let jump = get_key(VK_SPACE)
     var p_col = check_collisions(walls, player)
     //print("{p_col.go}\n")
-    if !p_col.d  
+    if !p_col.d 
         apply_gravity(player, dt)
-        if(p_col.u)
-            player_levelingY(player, p_col.uo-10f)
-    else 
-        if(player.velocity.y >= 0f)
+        if(p_col.u || (p_col.r && p_col.l))
+            player_levelingY(player, p_col.uo)
+    if p_col.d
+        if(player.velocity.y >= 0f && !p_col.u)
             player_levelingY(player, p_col.dof)
+        
         if ((jump && !jump_pressed && p_col.d))
             jump_player(player)
         jump_pressed = jump
     
     update_input(player, dt, p_col)
     //print("down   up     right  left  \n")
-    //print("{p_col.d}, {p_col.u}, {p_col.r}, {p_col.l}\n")
+    print("{p_col.d}, {p_col.u}, {p_col.r}, {p_col.l}, {player.velocity.y}\n")
 def jump_player(var player: Player)
     player.velocity.y += clamp(player.velocity.y - player.force_jump, -1000.0, -250.0)
 
