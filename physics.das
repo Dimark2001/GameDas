@@ -86,23 +86,31 @@ def check_collisions(var walls: array<Wall>; player: Player)
 
 
 
-def check_button(var buttons: array<Button>; var player: Player)
-    for b in buttons
-        if is_collision(b.collider, player)
-            b.is_active = true
-            b.pos.y += 10f//b.collider.bottomRightCorner.y
-            b.color = 0xff
-            update_button(b, player)
-        else
-            b.is_active = false
-            //print("{b.is_active}\n")
-            //b.pos.y = b.collider.bottomRightCorner.y
-
-def update_button(var b: Button;var player: Player)
-    if b.tag == "jump"
-        jump_player(player) 
-    if b.tag == "tp"
-        player.pos.x+=800f
+def check_buttons(var b: array<Button>; var player: Player)
+    //var test_buttons := b
+    if !loading_level
+        for i in range(0, length(b))
+            if is_collision(b[i].collider, player)
+                b[i].color = 0xff
+                b[i].is_active = true
+                update_button(b[i], player)
+            else
+                b[i].is_active = false
+        
+    
+def update_button(var b: Button; var player: Player)
+    if b.is_active
+        if b.tag == "jump"
+            //b.is_active = false
+            print("b jump")
+        if b.tag == "tp"
+            //b.is_active = false
+            player.pos.x+=800f
+        if b.tag == "nextLevel"
+            //b.is_active = false
+            ++current_level
+            load_level(current_level)
+    
 
 def player_levelingY(var player: Player; offset: float)
     player.pos.y -=(offset-1f)
@@ -114,7 +122,7 @@ def player_levelingX(var player: Player; offset: float)
 
 def update_player(var player: Player; dt: float)
     player.collider.topLeftCorner = player.pos
-    player.collider.bottomRightCorner = player.pos+float2(player.w_col, player.h_col)
+    player.collider.bottomRightCorner = player.pos+float2(player.width, player.height)
     player.pos.x += player.velocity.x*dt
     player.pos.y += player.velocity.y*dt
 
@@ -134,8 +142,9 @@ def update_player(var player: Player; dt: float)
         jump_pressed = jump
     
     update_input(player, dt, p_col)
+    check_buttons(buttons, player)
     //print("down   up     right  left  \n")
-    print("{p_col.d}, {p_col.u}, {p_col.r}, {p_col.l}, {player.velocity.y}\n")
+    //print("{p_col.d}, {p_col.u}, {p_col.r}, {p_col.l}, {player.velocity.y}\n")
 def jump_player(var player: Player)
     player.velocity.y += clamp(player.velocity.y - player.force_jump, -1000.0, -250.0)
 

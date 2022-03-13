@@ -11,7 +11,7 @@ require gameInit
 def initialize
     set_window_title("gome")
     load_level(0)
-    restart_player(player)
+    //restart_player(player)
     //for i in range(0, 50)
     //    create_wall(float2(100+50*i, 500-25*i), float2(50, 25), 0x00000000)
     //create_wall(float2(250, 200), float2(400, 300), BRICK_COLOR, true)
@@ -31,7 +31,8 @@ def act(dt: float)
         schedule_quit_game()
         
     update_player(player, dt)
-    check_button(buttons, player)
+    if get_key_down(VK_R)
+        load_level(++current_level)
 
     return
 // this function will be called every frame after 'act',

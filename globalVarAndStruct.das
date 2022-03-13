@@ -20,14 +20,18 @@ var
     rect_collider: Rect_collider
     player: Player
     gravity: float = 9.8*10f
-    walls: array<Wall> 
-    buttons: array<Button> 
+    //walls: array<Wall> 
+    //buttons: array<Button> 
     levels: array<Level>
     //wall: Wall
     jump_pressed: bool = false
     is_jump:bool = false
     offsetRL: float //погрешность для боковых столкновений
     offsetDU: float //погрешность для нижн./верх. столкновений
+    current_level: int = 0
+    max_levels: int = 1
+
+    loading_level: bool
 
 struct Rect_collider
     topLeftCorner: float2
@@ -47,8 +51,8 @@ struct Player
     velocity: float2
     speed: float
     force_jump: float = 10f
-    h_col: float = 100f
-    w_col: float = 100f
+    height: float = 100f
+    width: float = 100f
 struct Button
     collider: Rect_collider
     color: uint
