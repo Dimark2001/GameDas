@@ -20,7 +20,15 @@ def render_buttons(var buttons: array<Button>)
         var width = b.collider.bottomRightCorner.x - b.collider.topLeftCorner.x
         b.collider.topLeftCorner = b.pos
         fill_rect(b.pos.x, b.pos.y, width, height, b.color)
-def render_level(var walls: array<Wall>; var buttons: array<Button>)
+def render_buttons_menu(var b_menu: array<Button_menu>)
+    for b in b_menu
+        var height = b.collider.bottomRightCorner.y - b.collider.topLeftCorner.y
+        var width = b.collider.bottomRightCorner.x - b.collider.topLeftCorner.x
+        b.collider.topLeftCorner = b.pos
+        fill_rect(b.pos.x, b.pos.y, width, height, b.color)
+
+def render_level(var walls: array<Wall>; var buttons: array<Button>; var buttons_menu: array<Button_menu>)
+    render_buttons_menu(buttons_menu)
     render_walls(walls)
     render_buttons(buttons)
 
