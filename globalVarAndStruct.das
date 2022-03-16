@@ -45,7 +45,10 @@ struct Wall
     color: uint
     pos: float2
     //death
-
+struct Label
+    text: string
+    font_size: float
+    pos: float2
 struct Player
     collider: Rect_collider
     pos: float2
@@ -68,7 +71,9 @@ struct Button_menu
     color_cross: uint
     color_click: uint
     color_def: uint
+    tag: string
     pressed: bool = true
+    text: Label
     //image
 struct Level
     mesh_level: array<array<string>>

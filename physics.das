@@ -87,15 +87,15 @@ def check_collisions(var walls: array<Wall>; player: Player)
 
 
 def check_buttons(var b: array<Button>; var player: Player)
-    //var test_buttons := b
     if !loading_level
         for i in range(0, length(b))
-            if is_collision(b[i].collider, player)
-                b[i].color = 0xff
-                b[i].is_active = true
-                update_button(b[i], player)
-            else
-                b[i].is_active = false
+            if i < length(b) 
+                if is_collision(b[i].collider, player)
+                    b[i].color = 0xff
+                    b[i].is_active = true
+                    update_button(b[i], player)
+                else
+                    b[i].is_active = false
         
     
 def update_button(var b: Button; var player: Player)

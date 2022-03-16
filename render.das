@@ -26,11 +26,15 @@ def render_buttons_menu(var b_menu: array<Button_menu>)
         var width = b.collider.bottomRightCorner.x - b.collider.topLeftCorner.x
         b.collider.topLeftCorner = b.pos
         fill_rect(b.pos.x, b.pos.y, width, height, b.color)
+        
+        set_font_name("sans")
+        set_font_size(b.text.font_size)
+        text_out(b.text.pos.x, b.text.pos.y, b.tag, 0x0)
+        //text_out(100, 520, "Open Sans", make_color(0.2, 0.3, 0.1))
 
 def render_level(var walls: array<Wall>; var buttons: array<Button>; var buttons_menu: array<Button_menu>)
-    render_buttons_menu(buttons_menu)
     render_walls(walls)
     render_buttons(buttons)
-
+    render_buttons_menu(buttons_menu)
 def render_background()
     fill_rect(0, 0, WIDTH_SCREEN, HEIGHT_SCREEN, BACK_COLOR)

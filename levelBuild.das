@@ -18,8 +18,8 @@ def read_level() : array<Level>
     var mL3 = [[string "w";"-";"-";"-";"-";"-";"-";"-";"c";"-";"-";"-";"-";"-";"-";"w"]]
     var mL4 = [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
     var mL5 = [[string "w";"-";"-";"-";"-";"-";"-";"-";"w";"-";"-";"-";"-";"-";"-";"w"]]
-    var mL6 = [[string "w";"-";"-";"-";"-";"-";"-";"w";"w";"-";"-";"-";"-";"-";"-";"w"]]
-    var mL7 = [[string "w";"-";"-";"-";"-";"-";"w";"w";"w";"-";"-";"-";"-";"-";"-";"w"]]
+    var mL6 = [[string "w";"-";"-";"-";"-";"c";"-";"w";"w";"-";"-";"-";"-";"-";"-";"w"]]
+    var mL7 = [[string "w";"-";"-";"-";"-";"c";"w";"w";"w";"-";"-";"-";"-";"-";"-";"w"]]
     var mL8 = [[string "w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
 
     var m1L0 = [[string "w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
@@ -59,10 +59,18 @@ def read_level() : array<Level>
 
 def load_level(var index: int)   
     loading_level = true
-    if index > max_levels
+    //if index > max_levels
+    //    index = 0
+    max_levels = length(read_level())
+    print("{index}<X\n")
+    
+    if index < max_levels
+        
+        print("{index}<-\n")
+    else
         index = 0
+        current_level = index
     clear_level()
-    current_level = index
     build_level(read_level()[index])
     loading_level = false
 
@@ -117,4 +125,4 @@ def create_button(var pos: float2; scale: float2; color: uint; tag: string)
 def clear_level()
     clear(walls)
     clear(buttons)
-    
+    clear(buttons_menu)
