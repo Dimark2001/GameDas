@@ -70,6 +70,7 @@ def button_click(var b: Button_menu)
         //load_level(0)
     if tag == "exit"
         print("exit")
+        schedule_quit_game()
     if tag == "restart"
         load_level(current_level)
     //if tag == "settings"
