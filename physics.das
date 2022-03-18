@@ -60,28 +60,50 @@ def dir_collision(other: Rect_collider; player: Player)
 
 def check_collisions(var walls: array<Wall>; player: Player)
     var p_col, all_col : tuple<d:bool; u:bool; r:bool; l:bool; dof:float; uo:float; ro:float; lo:float>
-
+    var testD,testU: bool = false
+    var a: int = 0
     for w in walls
         if is_collision(w.collider, player)
             w.collider.collision_for_player = true
+            a++
             p_col = dir_collision(w.collider, player)
-            if p_col.d //&& ((!all_col.u && !p_col.u) || ((all_col.r || p_col.r) && (all_col.l || p_col.l)))
+            
+            if p_col.d  
+                testD = true
+            if p_col.u 
+                testU = true
+
+            if p_col.d && p_col.dof < 20f 
                 all_col.d = true
                 all_col.dof = p_col.dof
-            if p_col.u
+            if p_col.u && p_col.uo > -20f 
                 all_col.u = true
                 all_col.uo = p_col.uo
-            if p_col.r
+                //print("{p_col.uo}\n")
+
+            if p_col.r && !all_col.r
+                p_col.d = false
+                p_col.u = false
                 all_col.r = true
                 all_col.ro = p_col.ro
-            if p_col.l
+            if p_col.l && !all_col.l
                 all_col.l = true
+                p_col.d = false
+                p_col.u = false
                 all_col.lo = p_col.lo
-            if all_col.d && all_col.u
+            if testD && testU //all_col.d && all_col.u || p_col.d && p_col.u
                 all_col.d = false
                 all_col.u = false
+                testD = false
+                testU = false
+            if all_col.r && all_col.l
+                all_col.d = true
+
+            //print("{all_col}\n")
+            //print("{p_col.r} {p_col.l} {length(walls)} {p_col.d}\n")
         else
             w.collider.collision_for_player = false
+    print("{a}\n")
     return all_col;
 
 
@@ -134,10 +156,10 @@ def update_player(var player: Player; dt: float)
         if(p_col.u || (p_col.r && p_col.l))
             player_levelingY(player, p_col.uo)
     if p_col.d
-        if(player.velocity.y >= 0f && !p_col.u)
+        if(player.velocity.y >= 0f)
             player_levelingY(player, p_col.dof)
         
-        if ((jump && !jump_pressed && p_col.d))
+        if ((jump && !jump_pressed && p_col.dof < 2f))
             jump_player(player)
         jump_pressed = jump
     
@@ -146,7 +168,8 @@ def update_player(var player: Player; dt: float)
     //print("down   up     right  left  \n")
     //print("{p_col.d}, {p_col.u}, {p_col.r}, {p_col.l}, {player.velocity.y}\n")
 def jump_player(var player: Player)
-    player.velocity.y += clamp(player.velocity.y - player.force_jump, -1000.0, -250.0)
+    player.velocity.y = 0f
+    player.velocity.y += clamp(player.velocity.y - player.force_jump, -player.force_jump, -250.0)
 
 def apply_gravity(var player: Player; dt: float)
     player.velocity.y += gravity*dt*10f

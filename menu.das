@@ -7,13 +7,15 @@ def close_menu()
 def load_menu()
     clear_level()
     main_menu()
-
 def main_menu()
     //create_button_menu(float2(100f, 100f), float2(400f, 400f), 0x0000ff, 0xffff, true)
     //create_button_menu(float2(WIDTH_SCREEN/2-200, HEIGHT_SCREEN/2-200), float2(400f, 400f), "restart", 0xffffff, 0x00ff00, 0xff0000)
     create_back_menu(float2(0, 0), float2(WIDTH_SCREEN, HEIGHT_SCREEN), 0xb0234d)
-    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2-200), float2(500, 100), "restart", 0xffff, 0xf0ff00, 0xff00f0)
-    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2), float2(500, 100), "exit", 0xffff, 0xf0ff00, 0xff00f0)
+    create_back_menu(float2(100, 100), float2(WIDTH_SCREEN-200, HEIGHT_SCREEN-200), 0x00)
+    create_back_menu(float2(110, 110), float2(WIDTH_SCREEN-220, HEIGHT_SCREEN-220), 0xf1234f)
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2-200), float2(500, 100), "Start", 0xffff, 0xf0ff00, 0xff00f0)
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2), float2(500, 100), "Exit", 0xffff, 0xf0ff00, 0xff00f0)
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2+200), float2(500, 100), "Restart", 0xffff, 0xf0ff00, 0xff00f0)
     
 def create_button_menu(var pos: float2; scale: float2; tag:string; color_def: uint; color_cross: uint; color_click: uint)
     var button_menu: Button_menu
@@ -66,12 +68,12 @@ def is_cross(var other: Rect_collider)
 def button_click(var b: Button_menu)
     b.color = b.color_click
     var tag = b.tag
-    //if tag == "start"
-        //load_level(0)
-    if tag == "exit"
+    if tag == "Start"
+        load_level(0)
+    if tag == "Exit"
         print("exit")
         schedule_quit_game()
-    if tag == "restart"
+    if tag == "Restart"
         load_level(current_level)
     //if tag == "settings"
         //settings_menu()

@@ -28,6 +28,8 @@ def act(dt: float)
         load_level(current_level)
     if get_key_down(VK_X)
         load_menu()
+        
+
     if get_key_down(VK_Z)
         
         create_wall(player.pos, float2(player.height, player.width), 0x00ff00)
