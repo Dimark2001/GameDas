@@ -29,7 +29,8 @@ def render_buttons_menu(var b_menu: array<Button_menu>)
         
         set_font_name("sans")
         set_font_size(b.text.font_size)
-        text_out(b.text.pos.x, b.text.pos.y, b.tag, 0x0)
+        if b.tag != "false"
+            text_out(b.text.pos.x, b.text.pos.y, b.tag, 0x0)
         //text_out(100, 520, "Open Sans", make_color(0.2, 0.3, 0.1))
 
 def render_level(var walls: array<Wall>; var buttons: array<Button>; var buttons_menu: array<Button_menu>)

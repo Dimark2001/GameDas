@@ -20,10 +20,7 @@ var
     rect_collider: Rect_collider
     player: Player
     gravity: float = 9.8*10f
-    //walls: array<Wall> 
-    //buttons: array<Button> 
     levels: array<Level>
-    //wall: Wall
     jump_pressed: bool = false
     is_jump:bool = false
     offsetRL: float //погрешность для боковых столкновений
@@ -34,6 +31,7 @@ var
     walls: array<Wall> 
     buttons: array<Button> 
     buttons_menu: array<Button_menu> 
+    is_menu:bool
 struct Rect_collider
     topLeftCorner: float2
     bottomRightCorner: float2

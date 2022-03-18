@@ -21,16 +21,16 @@ def initialize
 def act(dt: float)
     if get_key(VK_ESCAPE)
         schedule_quit_game()
-        
-    update_player(player, dt)
+    if !is_menu        
+        update_player(player, dt)
     check_buttons_menu(buttons_menu)
     if get_key_down(VK_R)
         load_level(current_level)
-    if get_key_down(VK_X)
-        load_menu()
+    
+    load_menu()
         
 
-    if get_key_down(VK_Z)
+    if get_key_down(VK_Z) && !is_menu
         
         create_wall(player.pos, float2(player.height, player.width), 0x00ff00)
         player.pos = player.start_pos

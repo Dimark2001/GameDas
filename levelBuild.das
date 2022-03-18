@@ -65,7 +65,7 @@ def load_level(var index: int)
     print("{index}<X\n")
     
     if index < max_levels
-        
+        current_level = index
         print("{index}<-\n")
     else
         index = 0
@@ -126,3 +126,4 @@ def clear_level()
     clear(walls)
     clear(buttons)
     clear(buttons_menu)
+    is_menu = false
