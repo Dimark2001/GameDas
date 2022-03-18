@@ -2,18 +2,15 @@ require daslib/media
 require levelBuild
 require globalVarAndStruct
 
-var
-    count:int
 def close_menu()
     is_menu = false
     clear(buttons_menu)
 def load_menu()
     if get_key_down(VK_X)
-        if count%2 == 0
+        if !is_menu
             main_menu()
         else 
             close_menu()
-        count++
 def main_menu()
     is_menu = true
     //create_button_menu(float2(100f, 100f), float2(400f, 400f), 0x0000ff, 0xffff, true)
