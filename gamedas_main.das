@@ -7,7 +7,8 @@ require render
 require gameInit
 require menu
 
-
+var
+    fps_counter:float
 [export]
 def initialize
     set_window_title("gome")
@@ -37,13 +38,18 @@ def act(dt: float)
         
         create_wall(player.pos, float2(player.height, player.width), 0xffff0077)
         player.pos = player.start_pos
+    fps_counter = 1.0f / dt
     return
 [export]
 def draw
+    set_font_name("sans")
+    //text_out(10f, 10f, "1000f", 0xff00)
+    
     enable_alpha_blend()
     render_background()
     render_player(player)
     render_level(walls, buttons, buttons_menu)
+
     disable_alpha_blend()
-    
+    text_out(10f, 10f, "{fps_counter}", 0x0)
     return
