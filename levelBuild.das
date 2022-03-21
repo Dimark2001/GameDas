@@ -62,16 +62,17 @@ def load_level(var index: int)
     //if index > max_levels
     //    index = 0
     max_levels = length(read_level())
-    print("{index}<X\n")
+    //print("{length(walls)}<W\n")
     
     if index < max_levels
         current_level = index
-        print("{index}<-\n")
+        //print("{index}<-\n")
     else
         index = 0
         current_level = index
     clear_level()
     build_level(read_level()[index])
+    print("{length(walls)}<W\n")
     loading_level = false
 
 def build_level(level: Level)
@@ -101,9 +102,9 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
     elif tile == PLAYER_SYMBOL
         restart_player(player, global_tile_pos, scale_tile.x, scale_tile.y)
     elif tile == BUTTON_SYMBOL
-        create_button(global_tile_pos, scale_tile, 0xFF00FF, "jump")
+        create_button(global_tile_pos, scale_tile, BUTTON_COLOR, "jump")
     elif tile == CLOSE_SYMBOL
-        create_button(global_tile_pos, scale_tile, 0xF09011, "nextLevel")
+        create_button(global_tile_pos, scale_tile, BUTTON_COLOR, "nextLevel")
     
 def create_wall(var pos: float2; scale: float2; color: uint; trigger: bool = false)
     var new_wall: Wall

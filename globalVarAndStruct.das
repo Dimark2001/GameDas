@@ -3,12 +3,25 @@ require daslib/media
 let 
     HEIGHT_SCREEN = get_screen_height()
     WIDTH_SCREEN = get_screen_width()
-    BACK_COLOR = 0xF0F0A0
-    BRICK_COLOR = 0xFF0000
-    PLAYER_COLOR = 0x0000ff
+
     JUMP_KEY = VK_SPACE
     MOVE_RIGHT_KEY = VK_D
     MOVE_LEFT_KEY = VK_A
+
+    BACK_COLOR = make_color(0.9F,0.8F,0.7F,1F)
+    BRICK_COLOR = make_color(1F,0F,0F,1F)
+    PLAYER_COLOR = make_color(0F,0F,1F,1F)
+
+    BUTTON_COLOR = make_color(0.7F,0.2F,1F,1F)
+    //-----MENU
+    BUTTON_MENU_COLOR = make_color(1F,0F,0F,1F)
+    BUTTON_MENU_CROSS_COLOR = make_color(0.5F,0F,0F,1F)
+    BUTTON_MENU_CLICK_COLOR = make_color(0F,1F,0F,1F)
+    BUTTON_MENU_OUTLINE_COLOR = make_color(0F,0F,0F,0.8F)
+    BACK_MENU_COLOR = make_color(0.7F,0.7F,0.7F,1F)
+    BACK_MENU_COLOR1 = make_color(0.5F,0.3F,0.3F,1F)
+    TEXT_MENU_COLOR = make_color(0F,0F,0F,1F)
+    //-----MENU
 
     WALL_SYMBOL: string = "w"
     PLAYER_SYMBOL: string = "p"

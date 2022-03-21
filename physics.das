@@ -103,7 +103,7 @@ def check_collisions(var walls: array<Wall>; player: Player)
             //print("{p_col.r} {p_col.l} {length(walls)} {p_col.d}\n")
         else
             w.collider.collision_for_player = false
-    print("{a}\n")
+    //print("{a}\n")
     return all_col;
 
 

@@ -1,12 +1,23 @@
 require daslib/media
 
 require globalVarAndStruct
-
+var 
+    body <- create_image("Resources/ramka.png")
+    mask <- create_image("Resources/ramka.png")
+    heat <- create_image("Resources/ramka.png")
+    legs <- create_image("Resources/ramka.png")
 def render_player(var player: Player)
     var height = player.collider.bottomRightCorner.y - player.collider.topLeftCorner.y
     var width = player.collider.bottomRightCorner.x - player.collider.topLeftCorner.x
     fill_rect(player.pos.x, player.pos.y, width, height, PLAYER_COLOR)
 
+    
+    body |> draw_image(player.pos.x, player.pos.y, make_color(1f,1f,1f,1f), float2(width, height))
+    mask |> draw_image(player.pos.x + height/2f, player.pos.y-width/2f, make_color(1f,1f,1f,1f), float2(width, height))
+    heat |> draw_image(player.pos.x - height/2f, player.pos.y-width/2f, make_color(1f,1f,1f,1f), float2(width, height))
+    legs |> draw_image(player.pos.x - width/2f, player.pos.y + height/2f, make_color(1f,1f,1f,1f), float2(width, height))
+    legs |> draw_image(player.pos.x + width/2f, player.pos.y + height/2f, make_color(1f,1f,1f,1f), float2(width, height))
+    //fill_rect( , )
 
 def render_walls(var walls: array<Wall>)
     for wall in walls
@@ -30,7 +41,7 @@ def render_buttons_menu(var b_menu: array<Button_menu>)
         set_font_name("sans")
         set_font_size(b.text.font_size)
         if b.tag != "false"
-            text_out(b.text.pos.x, b.text.pos.y, b.tag, 0x0)
+            text_out(b.text.pos.x, b.text.pos.y, b.tag, TEXT_MENU_COLOR)
         //text_out(100, 520, "Open Sans", make_color(0.2, 0.3, 0.1))
 
 def render_level(var walls: array<Wall>; var buttons: array<Button>; var buttons_menu: array<Button_menu>)
