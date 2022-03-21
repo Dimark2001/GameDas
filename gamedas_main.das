@@ -14,7 +14,7 @@ def initialize
     set_window_title("gome")
     set_resolution(1600, 900)
     set_antialiasing(4)
-    set_vsync_enabled(true)
+    //set_vsync_enabled(true)
     
     load_level(100)
     return
@@ -42,7 +42,7 @@ def act(dt: float)
     return
 [export]
 def draw
-    set_font_name("sans")
+    
     //text_out(10f, 10f, "1000f", 0xff00)
     
     enable_alpha_blend()
@@ -51,5 +51,7 @@ def draw
     render_level(walls, buttons, buttons_menu)
 
     disable_alpha_blend()
+    set_font_name("mono")
+    set_font_size(25f)
     text_out(10f, 10f, "{fps_counter}", 0x0)
     return
