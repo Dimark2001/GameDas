@@ -4,6 +4,7 @@ require globalVarAndStruct
 require levelBuild
 require render
 require gameInit
+require menu
 
 def is_collision(var other: Rect_collider; player: Player)
     if ((player.collider.bottomRightCorner.y > other.topLeftCorner.y)
@@ -16,7 +17,7 @@ def is_collision(var other: Rect_collider; player: Player)
 def dir_collision(other: Rect_collider; player: Player)
     
     var down,up,right,left: bool
-    var pl_col = player.collider
+    var pl_col := player.collider
     var down_offset, up_offset, right_offset, left_offset: float
     //down
     if ((pl_col.bottomRightCorner.y >= other.topLeftCorner.y-offsetDU)
@@ -108,31 +109,41 @@ def check_collisions(var walls: array<Wall>; player: Player)
 
 
 
-def check_buttons(var b: array<Button>; var player: Player)
+def check_triggers(var t: array<Trigger>; var player: Player)
     if !loading_level
-        for i in range(0, length(b))
-            if i < length(b) 
-                if is_collision(b[i].collider, player)
-                    b[i].color = 0xff
-                    b[i].is_active = true
-                    update_button(b[i], player)
+        for i in range(0, length(t))
+            if i < length(t) 
+                if is_collision(t[i].collider, player)
+                    t[i].color = 0xff
+                    t[i].is_active = true
+                    update_trigger(t[i], player)
                 else
-                    b[i].is_active = false
+                    t[i].is_active = false
+                    
         
     
-def update_button(var b: Button; var player: Player)
-    if b.is_active
-        if b.tag == "jump"
+def update_trigger(var t: Trigger; var player: Player)
+    if t.is_active
+        if t.tag == "jump"
             //b.is_active = false
             print("b jump")
-        if b.tag == "tp"
+        if t.tag == "tp"
             //b.is_active = false
             player.pos.x+=800f
-        if b.tag == "nextLevel"
+        
+        if t.tag == "nextLevel"
             //b.is_active = false
             ++current_level
             load_level(current_level)
-    
+        if t.tag == "spawn"
+            //b.is_active = false
+            //print("spawn")
+            select_player_menu()
+            //is_bar = true
+    else
+        if t.tag == "spawn"
+            select_player_menu()
+
 
 def player_levelingY(var player: Player; offset: float)
     player.pos.y -=(offset-1f)
@@ -148,7 +159,7 @@ def update_player(var player: Player; dt: float)
     player.pos.x += player.velocity.x*dt
     player.pos.y += player.velocity.y*dt
 
-    let jump = get_key(VK_SPACE)
+    let jump = get_key(VK_SPACE)//int(get_mouse_scroll_delta()) != 0 ? true : false 
     var p_col = check_collisions(walls, player)
     //print("{p_col.go}\n")
     if !p_col.d 
@@ -159,12 +170,12 @@ def update_player(var player: Player; dt: float)
         if(player.velocity.y >= 0f)
             player_levelingY(player, p_col.dof)
         
-        if ((jump && !jump_pressed && p_col.dof < 2f))
+        if ((jump && !jump_pressed && p_col.dof < 2f && spawn_station.open))
             jump_player(player)
         jump_pressed = jump
-    
-    update_input(player, dt, p_col)
-    check_buttons(buttons, player)
+    if spawn_station.open
+        update_input(player, dt, p_col)
+    check_triggers(triggers, player)
     //print("down   up     right  left  \n")
     //print("{p_col.d}, {p_col.u}, {p_col.r}, {p_col.l}, {player.velocity.y}\n")
 def jump_player(var player: Player)
@@ -178,7 +189,7 @@ def update_input(var player: Player; dt: float; p_col: tuple<d:bool; u:bool; r:b
     if (get_key(VK_A) && !p_col.l)
         player.velocity.x = -player.speed*dt*50f
     elif (get_key(VK_D) && !p_col.r)
-        player.velocity.x = player.speed*dt*50f
+        player.velocity.x = player.speed*dt*50f//player.speed*dt
     else
         player.velocity.x = 0f
        

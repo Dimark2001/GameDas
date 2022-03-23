@@ -9,10 +9,33 @@ let
     MOVE_LEFT_KEY = VK_A
 
     BACK_COLOR = make_color(0.9F,0.8F,0.7F,1F)
-    BRICK_COLOR = make_color(1F,0F,0F,1F)
+    BRICK_COLOR = make_color(1F,1F,1F,1F)
     PLAYER_COLOR = make_color(0F,0F,1F,1F)
+    TRIGGER_COLOR = make_color(0.7F,0.2F,1F,1F)
+    SPAWN_STATION_COLOR =  make_color(1F,1F,1F,1F)
 
-    BUTTON_COLOR = make_color(0.7F,0.2F,1F,1F)
+    BACK_IMAGE <- create_image("Resources/ramka.png")
+    BRICK_IMAGE <- create_image("Sprites/grass.png")
+    PLAYER_IMAGE <- create_image("Sprites/PlayerStone.png")
+    TRIGGER_IMAGE <- create_image("Resources/ramka.png")
+    SPAWN_STATION_IMAGE <- create_image("Resources/flag.png")
+
+    MASK_METAL <- create_image("Sprites/MaskSvar.png")
+    MASK_STONE <- create_image("Resources/flag.png")
+    MASK_WOOD <- create_image("Resources/EMPTY.png")
+
+    BODY_METAL <- create_image("Sprites/PlayerCupper.png")
+    BODY_STONE <- create_image("Sprites/PlayerStone.png")
+    BODY_WOOD <- create_image("Sprites/Stone1.png")
+
+    HEAT_METAL <- create_image("Resources/ramka.png")
+    HEAT_STONE <- create_image("Resources/ramka.png")
+    HEAT_WOOD <- create_image("Resources/ramka.png")
+
+    LEGS_METAL <- create_image("Resources/ramka.png")
+    LEGS_STONE <- create_image("Resources/ramka.png")
+    LEGS_WOOD <- create_image("Resources/ramka.png")
+
     //-----MENU
     BUTTON_MENU_COLOR = make_color(1F,0F,0F,1F)
     BUTTON_MENU_CROSS_COLOR = make_color(0.5F,0F,0F,1F)
@@ -21,34 +44,53 @@ let
     BACK_MENU_COLOR = make_color(0.7F,0.7F,0.7F,1F)
     BACK_MENU_COLOR1 = make_color(0.5F,0.3F,0.3F,1F)
     TEXT_MENU_COLOR = make_color(0F,0F,0F,1F)
+    //--Bar
+    METAL_PLAYER <- create_image("Sprites/PlayerCupper.png")
+    STONE_PLAYER <- create_image("Sprites/PlayerStone.png")
+    WOOD_PLAYER <- create_image("Sprites/Stone1.png")
+    //--Bar
     //-----MENU
-
     WALL_SYMBOL: string = "w"
     PLAYER_SYMBOL: string = "p"
-    BUTTON_SYMBOL: string = "b"
+    TRIGGER_SYMBOL: string = "t"
     CLOSE_SYMBOL: string = "c"
     NULL_SYMBOL: string = "-"
-
 var
     rect_collider: Rect_collider
     player: Player
+    spawn_station: Spawn_station
+    
     gravity: float = 9.8*10f
     levels: array<Level>
+    image_player_in_bar: array<Image>
     jump_pressed: bool = false
     is_jump:bool = false
+    update_bar: bool
     offsetRL: float //погрешность для боковых столкновений
     offsetDU: float //погрешность для нижн./верх. столкновений
     current_level: int = 0
     max_levels: int = 1
     loading_level: bool
     walls: array<Wall> 
-    buttons: array<Button> 
+    triggers: array<Trigger> 
     buttons_menu: array<Button_menu> 
     is_menu:bool
+    is_restart:bool
+    select_index:int
+    labels: array<Label>
+    body <- create_image("Resources/EMPTY.png")
+    mask <- create_image("Resources/EMPTY.png")
+    heat <- create_image("Resources/EMPTY.png")
+    legs <- create_image("Resources/EMPTY.png")
+
+    spawn <- create_image("Resources/EMPTY.png")
+
+
 struct Rect_collider
     topLeftCorner: float2
     bottomRightCorner: float2
     collision_for_player: bool = false
+    image: Image
     //trigger: bool = false
 
 struct Wall
@@ -58,8 +100,10 @@ struct Wall
     //death
 struct Label
     text: string
+    font: string
     font_size: float
     pos: float2
+
 struct Player
     collider: Rect_collider
     pos: float2
@@ -69,7 +113,9 @@ struct Player
     height: float = 100f
     width: float = 100f
     start_pos: float2
-struct Button
+    type_player: array<Type_Player>
+
+struct Trigger
     collider: Rect_collider
     color: uint
     is_active: bool
@@ -86,5 +132,21 @@ struct Button_menu
     pressed: bool = true
     text: Label
     //image
+struct Spawn_station
+    open: bool
+    type_player: array<Type_Player_Bar>
+    //image: Image
 struct Level
     mesh_level: array<array<string>>
+    type_name: array<string>
+    type_count: array<int>
+
+struct Type_Player
+    name:string
+    active:bool
+
+struct Type_Player_Bar
+    name:string
+    image:Image
+    count:int
+    //type_player: array<Type_Player>

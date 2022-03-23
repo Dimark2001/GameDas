@@ -6,6 +6,7 @@ require levelBuild
 require render
 require gameInit
 require menu
+require player
 
 var
     fps_counter:float
@@ -13,8 +14,8 @@ var
 def initialize
     set_window_title("gome")
     set_resolution(1600, 900)
-    set_antialiasing(4)
-    //set_vsync_enabled(true)
+    //set_antialiasing(4)
+    set_vsync_enabled(false)
     
     load_level(100)
     return
@@ -25,7 +26,7 @@ def act(dt: float)
             main_menu()
         else 
             close_menu()
-    if !is_menu        
+    if !is_menu
         update_player(player, dt)
     check_buttons_menu(buttons_menu)
     if get_key_down(VK_R)
@@ -33,11 +34,8 @@ def act(dt: float)
     
     load_menu()
         
-
-    if get_key_down(VK_Z) && !is_menu
-        
-        create_wall(player.pos, float2(player.height, player.width), 0xffff0077)
-        player.pos = player.start_pos
+    if get_key_down(VK_Z)
+        dead_player(player)
     fps_counter = 1.0f / dt
     return
 [export]
@@ -48,7 +46,7 @@ def draw
     enable_alpha_blend()
     render_background()
     render_player(player)
-    render_level(walls, buttons, buttons_menu)
+    render_level(walls, triggers, buttons_menu)
 
     disable_alpha_blend()
     set_font_name("mono")
