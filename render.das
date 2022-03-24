@@ -22,7 +22,7 @@ def render_walls(var walls: array<Wall>)
         var height = wall.collider.bottomRightCorner.y - wall.collider.topLeftCorner.y
         var width = wall.collider.bottomRightCorner.x - wall.collider.topLeftCorner.x
         wall.pos = wall.collider.topLeftCorner
-        if !wall.collider.image.valid
+        if wall.collider.image.width == 0
             fill_rect(wall.pos.x, wall.pos.y, width, height, wall.color)
         else
             wall.collider.image |> draw_image(wall.pos.x, wall.pos.y, wall.color, float2(width, height))
@@ -31,7 +31,7 @@ def render_triggers(var triggers: array<Trigger>)
         var height = t.collider.bottomRightCorner.y - t.collider.topLeftCorner.y
         var width = t.collider.bottomRightCorner.x - t.collider.topLeftCorner.x
         t.collider.topLeftCorner = t.pos
-        if !t.collider.image.valid
+        if t.collider.image.width == 0
             fill_rect(t.pos.x, t.pos.y, width, height, t.color)
         else
             t.collider.image |> draw_image(t.pos.x, t.pos.y, t.color, float2(width, height))
@@ -42,7 +42,7 @@ def render_buttons_menu(var b_menu: array<Button_menu>)
         var height = b.collider.bottomRightCorner.y - b.collider.topLeftCorner.y
         var width = b.collider.bottomRightCorner.x - b.collider.topLeftCorner.x
         b.collider.topLeftCorner = b.pos
-        if !b.collider.image.valid
+        if b.collider.image.width == 0
             fill_rect(b.pos.x, b.pos.y, width, height, b.color)
         else
             b.collider.image |> draw_image(b.pos.x, b.pos.y, b.color, float2(width, height))

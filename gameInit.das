@@ -3,7 +3,7 @@ require daslib/media
 
 require globalVarAndStruct
 def restart_player(var player: Player; pos: float2; height:float; width:float; var type_player_bar: array<Type_Player_Bar>)
-    
+    //delete_image_player()
     //is_restart = true
     //clear(player.type_player)
     player.pos = pos//float2(80,100)
@@ -42,6 +42,7 @@ def restart_player(var player: Player)
 def select_player(var index: int; active:bool = false)
     //if length(player.type_player) > 0
     unselect_player()
+    
     select_index = index
     var t = player.type_player[index]
     
@@ -54,6 +55,7 @@ def select_player(var index: int; active:bool = false)
     else
         spawn_station.open = false
     if t.active
+        print("----")
         if t.name == "metal"
             body := BODY_METAL
             mask := MASK_METAL
@@ -73,4 +75,24 @@ def select_player(var index: int; active:bool = false)
 def unselect_player()
     for i in range(0, length(player.type_player)) 
         player.type_player[i].active = false
+        
+// def delete_image_player()
+//     delete body
+//     delete mask
+//     delete heat
+//     delete legs
 
+//     delete BODY_METAL
+//     delete MASK_METAL
+//     delete HEAT_METAL
+//     delete LEGS_METAL
+
+//     delete BODY_STONE
+//     delete MASK_STONE
+//     delete HEAT_STONE
+//     delete LEGS_STONE
+
+//     delete BODY_WOOD
+//     delete MASK_WOOD
+//     delete HEAT_WOOD
+//     delete LEGS_WOOD

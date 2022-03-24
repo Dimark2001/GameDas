@@ -10,10 +10,10 @@ def read_level() : array<Level>
     var l0: Level
     var l1: Level
 
-    var type_name1 = [[string "stone"; "wood"; "metal"]]
-    var type_name2 = [[string "metal"; "wood"; "stone"]]
+    var type_name1 = [[string "stone"; "wood"; "metal"; "stone"]]
+    var type_name2 = [[string "metal"; "wood"]]
 
-    var type_count1 = [[int 1; 2; 3]]
+    var type_count1 = [[int 1; 2; 3; 1]]
     var type_count2 = [[int 3; 2; 1]]
     
     push(l0.type_name, type_name1)
@@ -69,15 +69,11 @@ def read_level() : array<Level>
 
 def load_level(var index: int)   
     loading_level = true
-    //if index > max_levels
-    //    index = 0
     max_levels = length(read_level())
-    //print("{length(walls)}<W\n")
     spawn_station.open = false
-    update_bar=true
+    update_bar = true
     if index < max_levels
         current_level = index
-        //print("{index}<-\n")
     else
         index = 0
         current_level = index
@@ -125,7 +121,7 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
     elif tile == CLOSE_SYMBOL
         create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "nextLevel", SPAWN_STATION_IMAGE)
     
-def create_wall(var pos: float2; scale: float2; color: uint; image: Image)
+def create_wall(var pos: float2; scale: float2; color: uint; image: ImageHandle)
     var new_wall: Wall
     new_wall.color = color
     new_wall.collider.image := image
@@ -136,7 +132,7 @@ def create_wall(var pos: float2; scale: float2; color: uint; image: Image)
     
     push_clone(walls, new_wall)
     
-def create_trigger(var pos: float2; scale: float2; color: uint; tag: string; image: Image)
+def create_trigger(var pos: float2; scale: float2; color: uint; tag: string; image: ImageHandle)
     var new_trigger: Trigger
     new_trigger.tag = tag
     new_trigger.color = color
@@ -147,11 +143,13 @@ def create_trigger(var pos: float2; scale: float2; color: uint; tag: string; ima
     push_clone(triggers, new_trigger)
 
 
-def create_array_type_player(var name: array<string>; var count: array<int>) : array<Type_Player_Bar>
+def create_array_type_player(var name: array<string>; var count: array<int>)// : array<Type_Player_Bar>
+    //clear()
     var count_type = length(name) <= length(count) ? length(name) : length(count)
     var types: array<Type_Player_Bar> 
     resize(types, count_type)
     for i in range(0, count_type)
+        //delete types[i].image
         types[i].name = name[i]
         types[i].count = count[i]
         print("{name[i]}, {current_level}\n")
@@ -165,8 +163,10 @@ def create_array_type_player(var name: array<string>; var count: array<int>) : a
 
 def create_spawn_station(var pos: float2; scale: float2; color: uint; type_player: array<Type_Player_Bar>)
     //create_trigger(pos, scale, color, "spawn", SPAWN_STATION_IMAGE)
+    delete spawn_station.type_player
+    
     spawn_station.type_player := type_player
-    //print("{spawn_station.type_player}")
+    print("                       >{length(spawn_station.type_player)}\n")
 
 def clear_level()
     clear(walls)

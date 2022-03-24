@@ -56,10 +56,12 @@ def settings_menu()
     create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2+200), float2(500, 100), "3", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 3f)
 
 def select_player_menu()
+
     if !spawn_station.open
         create_bar(float2(250, 250), spawn_station.type_player, 3, 200f)
     else
         close_menu()
+
 def game_over_menu()
     close_menu()
     is_menu = true
@@ -165,7 +167,7 @@ def create_back_menu(var pos: float2; scale: float2; color_def: uint; color_outl
     button_menu.collider.bottomRightCorner = pos + scale - offset
     push_clone(buttons_menu, button_menu)
 
-def create_back_menu(var pos: float2; scale: float2; color_def: uint; text: string; offset_textY: float; image: Image)
+def create_back_menu(var pos: float2; scale: float2; color_def: uint; text: string; offset_textY: float; image: ImageHandle)
     var button_menu: Button_menu
     button_menu.collider.image := image
     button_menu.text.font_size = 50f//scale.x//3f
