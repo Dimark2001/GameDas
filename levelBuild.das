@@ -10,11 +10,11 @@ def read_level() : array<Level>
     var l0: Level
     var l1: Level
 
-    var type_name1 = [[string "stone"; "wood"; "metal"; "stone"]]
+    var type_name1 = [[string "metal"]]
     var type_name2 = [[string "metal"; "wood"]]
 
-    var type_count1 = [[int 1; 2; 3; 1]]
-    var type_count2 = [[int 3; 2; 1]]
+    var type_count1 = [[int 1]]
+    var type_count2 = [[int 3; 2]]
     
     push(l0.type_name, type_name1)
     push(l1.type_name, type_name2)
@@ -70,10 +70,9 @@ def read_level() : array<Level>
     push(l1.mesh_level[11], m1L11)
     push_clone(levels, l0)
     push_clone(levels, l1)
-    //print("{levels[0].mesh_level}<---level\n")
     return <- levels
 
-def load_level(var index: int)   
+def load_level(var index: int)  
     loading_level = true
     max_levels = length(read_level())
     spawn_station.open = false
@@ -85,11 +84,12 @@ def load_level(var index: int)
         current_level = index
     clear_level()
     build_level(read_level()[index])
-    //print("{length(walls)}<W\n")
     loading_level = false
 
 def build_level(level: Level)
     var mesh := level.mesh_level
+    // var res = float(length(mesh[0])) / float(length(mesh))
+    // set_resolution(int(res*900f), 900)
     var pos_y:float = 0f
     var pos_x:float = 0f
     for x in mesh
@@ -101,20 +101,15 @@ def build_level(level: Level)
         pos_x++
 
 def create_tilemap(level: Level; tile: string; tile_pos: float2)
-    //var count_wall:int
-    //var type_player: array<Type_Player_Bar>
     
     var type_name := level.type_name
     var type_count := level.type_count
-    //print("{type_name}")
     var mesh := level.mesh_level
     var height_level = length(mesh)
     var width_level = length(mesh[0])
     var border_level: float2 = float2(100f,100f)
     var scale_tile = float2(HEIGHT_SCREEN/height_level, HEIGHT_SCREEN/height_level)
     var global_tile_pos = tile_pos*(scale_tile)
-    //print("{global_tile_pos} - pos\n")
-    //print("{scale_tile} - scale\n")
     if tile == WALL_SYMBOL
         create_wall(global_tile_pos, scale_tile, BRICK_COLOR, BRICK_IMAGE)
     if tile == WALL_SYMBOL8
@@ -160,7 +155,6 @@ def create_array_type_player(var name: array<string>; var count: array<int>)// :
         //delete types[i].image
         types[i].name = name[i]
         types[i].count = count[i]
-        print("{name[i]}, {current_level}\n")
         if name[i] == "stone"
             types[i].image := STONE_PLAYER
         if name[i] == "metal"
@@ -174,7 +168,6 @@ def create_spawn_station(var pos: float2; scale: float2; color: uint; type_playe
     delete spawn_station.type_player
     
     spawn_station.type_player := type_player
-    print("                       >{length(spawn_station.type_player)}\n")
 
 def clear_level()
     clear(walls)

@@ -15,9 +15,10 @@ def initialize
     set_window_title("gome")
     set_resolution(1680, 960)
     //set_antialiasing(4)
-    set_vsync_enabled(false)
+    set_vsync_enabled(true)
     
     load_level(100)
+
     return
 [export]
 def act(dt: float)
@@ -44,6 +45,7 @@ def draw
     //text_out(10f, 10f, "1000f", 0xff00)
     
     enable_alpha_blend()
+
     render_background()
     render_player(player)
     render_level(walls, triggers, buttons_menu)
