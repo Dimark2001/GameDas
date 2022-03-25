@@ -169,6 +169,7 @@ struct Spawn_station
     //image: Image
 struct Level
     mesh_level: array<array<string>>
+    level_name: string
     type_name: array<string>
     type_count: array<int>
 
