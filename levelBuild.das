@@ -167,7 +167,7 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
         tp_pos = global_tile_pos
         //create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "tp", TRIGGER_IMAGE)
     elif tile == CLOSE_SYMBOL
-        create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "nex0tLevel", SPAWN_STATION_IMAGE)
+        create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "nextLevel", SPAWN_STATION_IMAGE)
     
 def create_wall(var pos: float2; scale: float2; color: uint; image: ImageHandle)
     var new_wall: Wall
