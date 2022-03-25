@@ -19,7 +19,7 @@ let
     BRICK_IMAGE8 <- create_managed_image("Sprites/Stone8.png")
     PLAYER_IMAGE <- create_managed_image("Sprites/PlayerStone.png")
     TRIGGER_IMAGE <- create_managed_image("Resources/ramka.png")
-    SPAWN_STATION_IMAGE <- create_managed_image("Resources/flag.png")
+    SPAWN_STATION_IMAGE <- create_managed_image("Sprites/portal1.png")
 
     MASK_METAL <- create_managed_image("Sprites/MaskSvar.png")
     MASK_STONE <- create_managed_image("Resources/flag.png")
