@@ -60,11 +60,11 @@ def read_level() : array<Level>
     var m2L3 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
     var m2L4 =  [[string "w";"p";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"c";"-";"-";"-";"-";"w"]]
     var m2L5 =  [[string "w";"v";"v";"v";"-";"-";"-";"-";"-";"-";"-";"-";"-";"v";"v";"v";"-";"-";"-";"-";"w"]]
-    var m2L6 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"v";"v";"v";"-";"-";"-";"-";"-";"-";"-";"w"]]
+    var m2L6 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"o";"v";"v";"v";"-";"-";"-";"-";"-";"-";"-";"w"]]
     var m2L7 =  [[string "w";"-";"-";"-";"-";"-";"-";"v";"v";"v";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
     var m2L8 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
     var m2L9 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
-    var m2L10 = [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
+    var m2L10 = [[string "w";"i";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
     var m2L11 = [[string "w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
     resize(l0.mesh_level, 12)
     push(l0.mesh_level[0], mL0)
@@ -161,8 +161,13 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
         create_spawn_station(global_tile_pos, scale_tile, TRIGGER_COLOR, create_array_type_player(type_name, type_count))
     elif tile == TRIGGER_SYMBOL
         create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "jump", TRIGGER_IMAGE)
+    elif tile == PORTAL_IN_SYMBOL
+        create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "tp", TRIGGER_IMAGE)
+    elif tile == PORTAL_OUT_SYMBOL
+        tp_pos = global_tile_pos
+        //create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "tp", TRIGGER_IMAGE)
     elif tile == CLOSE_SYMBOL
-        create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "nextLevel", SPAWN_STATION_IMAGE)
+        create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "nex0tLevel", SPAWN_STATION_IMAGE)
     
 def create_wall(var pos: float2; scale: float2; color: uint; image: ImageHandle)
     var new_wall: Wall

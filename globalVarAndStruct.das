@@ -55,6 +55,8 @@ let
     WALL_SYMBOL8: string = "v"
     PLAYER_SYMBOL: string = "p"
     TRIGGER_SYMBOL: string = "t"
+    PORTAL_IN_SYMBOL: string = "i"
+    PORTAL_OUT_SYMBOL: string = "o"
     CLOSE_SYMBOL: string = "c"
     NULL_SYMBOL: string = "-"
 var
@@ -93,6 +95,7 @@ var
     gravity: float = 9.8*10f
     levels: array<Level>
     image_player_in_bar: array<ImageHandle>
+    tp_pos:float2
     jump_pressed: bool = false
     is_jump:bool = false
     update_bar: bool
@@ -107,8 +110,11 @@ var
     is_menu:bool
     is_gameover:bool
     //is_restart:bool
+
     select_index:int
     labels: array<Label>
+
+
     body <- create_managed_image("Resources/EMPTY.png")
     mask <- create_managed_image("Resources/EMPTY.png")
     heat <- create_managed_image("Resources/EMPTY.png")

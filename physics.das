@@ -114,7 +114,7 @@ def check_triggers(var t: array<Trigger>; var player: Player)
         for i in range(0, length(t))
             if i < length(t) 
                 if is_collision(t[i].collider, player)
-                    t[i].color = 0xff
+                    //t[i].color = 0xff
                     t[i].is_active = true
                     update_trigger(t[i], player)
                 else
@@ -129,7 +129,7 @@ def update_trigger(var t: Trigger; var player: Player)
             print("b jump")
         if t.tag == "tp"
             //b.is_active = false
-            player.pos.x+=800f
+            player.pos = tp_pos
         
         if t.tag == "nextLevel"
             //b.is_active = false
@@ -162,18 +162,18 @@ def update_player(var player: Player; dt: float)
     let jump = get_key(VK_SPACE)//int(get_mouse_scroll_delta()) != 0 ? true : false 
     var p_col = check_collisions(walls, player)
     //print("{p_col.go}\n")
-    if !p_col.d 
-        apply_gravity(player, dt)
-        if(p_col.u || (p_col.r && p_col.l))
-            player_levelingY(player, p_col.uo)
-    if p_col.d
-        if(player.velocity.y >= 0f)
-            player_levelingY(player, p_col.dof)
-        
-        if ((jump && !jump_pressed && p_col.dof < 2f && spawn_station.open))
-            jump_player(player)
-        jump_pressed = jump
     if spawn_station.open
+        if !p_col.d 
+            apply_gravity(player, dt)
+            if(p_col.u || (p_col.r && p_col.l))
+                player_levelingY(player, p_col.uo)
+        if p_col.d
+            if(player.velocity.y >= 0f)
+                player_levelingY(player, p_col.dof)
+            
+            if ((jump && !jump_pressed && p_col.dof < 2f && spawn_station.open))
+                jump_player(player)
+            jump_pressed = jump
         update_input(player, dt, p_col)
     check_triggers(triggers, player)
     //print("down   up     right  left  \n")
