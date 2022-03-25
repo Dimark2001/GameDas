@@ -13,11 +13,12 @@ var
 [export]
 def initialize
     set_window_title("gome")
-    set_resolution(1600, 900)
-    set_antialiasing(1)
+    set_resolution(1680, 960)
+    //set_antialiasing(4)
     set_vsync_enabled(true)
-    main_menu()
-    //load_level(100)
+    
+    load_level(100)
+
     return
 [export]
 def act(dt: float)

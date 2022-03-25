@@ -15,7 +15,8 @@ let
     SPAWN_STATION_COLOR =  make_color(1F,1F,1F,1F)
 
     BACK_IMAGE <- create_managed_image("Resources/ramka.png")
-    BRICK_IMAGE <- create_managed_image("Sprites/grass.png")
+    BRICK_IMAGE <- create_managed_image("Sprites/Stone5.png")
+    BRICK_IMAGE8 <- create_managed_image("Sprites/Stone8.png")
     PLAYER_IMAGE <- create_managed_image("Sprites/PlayerStone.png")
     TRIGGER_IMAGE <- create_managed_image("Resources/ramka.png")
     SPAWN_STATION_IMAGE <- create_managed_image("Resources/flag.png")
@@ -51,6 +52,7 @@ let
     //--Bar
     //-----MENU
     WALL_SYMBOL: string = "w"
+    WALL_SYMBOL8: string = "v"
     PLAYER_SYMBOL: string = "p"
     TRIGGER_SYMBOL: string = "t"
     CLOSE_SYMBOL: string = "c"
