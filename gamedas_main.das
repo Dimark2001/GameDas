@@ -13,7 +13,7 @@ var
 [export]
 def initialize
     set_window_title("gome")
-    set_resolution(1600, 900)
+    set_resolution(1680, 960)
     //set_antialiasing(4)
     set_vsync_enabled(false)
     

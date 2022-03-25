@@ -32,15 +32,18 @@ def read_level() : array<Level>
     var mL7 = [[string "w";"w";"w";"w";"w";"c";"w";"w";"w";"-";"-";"-";"-";"-";"-";"w"]]
     var mL8 = [[string "w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
 
-    var m1L0 = [[string "w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
-    var m1L1 = [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
-    var m1L2 = [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
-    var m1L3 = [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w";"-";"-";"-";"w"]]
-    var m1L4 = [[string "w";"-";"-";"-";"-";"-";"w";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
-    var m1L5 = [[string "w";"-";"-";"-";"-";"w";"w";"w";"w";"w";"-";"-";"-";"-";"-";"w"]]
-    var m1L6 = [[string "w";"-";"-";"-";"w";"w";"w";"-";"-";"w";"-";"-";"-";"-";"-";"w"]]
-    var m1L7 = [[string "w";"p";"-";"-";"-";"w";"w";"-";"-";"-";"-";"-";"-";"-";"c";"w"]]
-    var m1L8 = [[string "w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
+    var m1L0 = [[string "w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
+    var m1L1 = [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w";"w";"w";"w";"w";"w"]]
+    var m1L2 = [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w";"w";"w";"w";"w";"w"]]
+    var m1L3 = [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"v";"-";"-";"-";"w";"w";"w";"w";"w";"w"]]
+    var m1L4 = [[string "w";"-";"-";"-";"-";"-";"v";"-";"-";"-";"-";"-";"-";"-";"-";"w";"w";"w";"w";"w";"w"]]
+    var m1L5 = [[string "w";"-";"-";"-";"-";"v";"w";"v";"v";"v";"-";"-";"-";"-";"-";"w";"w";"w";"w";"w";"w"]]
+    var m1L6 = [[string "w";"-";"-";"-";"v";"w";"w";"-";"-";"w";"-";"-";"-";"-";"-";"w";"w";"w";"w";"w";"w"]]
+    var m1L7 = [[string "w";"p";"-";"-";"-";"w";"w";"-";"-";"-";"-";"-";"-";"-";"c";"w";"w";"w";"w";"w";"w"]]
+    var m1L8 = [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"v";"v";"w";"w";"w";"w";"w";"w"]]
+    var m1L9 = [[string "w";"v";"v";"v";"-";"-";"-";"-";"-";"-";"-";"-";"v";"w";"w";"w";"w";"w";"w";"w";"w"]]
+    var m1L10 = [[string "w";"w";"w";"w";"v";"v";"v";"v";"v";"v";"v";"v";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
+    var m1L11 = [[string "w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
     resize(l0.mesh_level, 9)
     push(l0.mesh_level[0], mL0)
     push(l0.mesh_level[1], mL1)
@@ -62,6 +65,9 @@ def read_level() : array<Level>
     push(l1.mesh_level[6], m1L6)
     push(l1.mesh_level[7], m1L7)
     push(l1.mesh_level[8], m1L8)
+    push(l1.mesh_level[9], m1L9)
+    push(l1.mesh_level[10], m1L10)
+    push(l1.mesh_level[11], m1L11)
     push_clone(levels, l0)
     push_clone(levels, l1)
     //print("{levels[0].mesh_level}<---level\n")
@@ -111,6 +117,8 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
     //print("{scale_tile} - scale\n")
     if tile == WALL_SYMBOL
         create_wall(global_tile_pos, scale_tile, BRICK_COLOR, BRICK_IMAGE)
+    if tile == WALL_SYMBOL8
+        create_wall(global_tile_pos, scale_tile, BRICK_COLOR, BRICK_IMAGE8)
     elif tile == PLAYER_SYMBOL
         create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "spawn", TRIGGER_IMAGE)
         //create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "spawn", SPAWN_STATION_IMAGE)
