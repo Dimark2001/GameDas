@@ -17,8 +17,8 @@ def initialize
     //set_antialiasing(4)
     set_vsync_enabled(true)
     
-    load_level(100)
-
+    //load_level(100)
+    main_menu()
     return
 [export]
 def act(dt: float)
