@@ -27,7 +27,7 @@ let
 
     BODY_METAL <- create_managed_image("Sprites/PlayerCupper.png")
     BODY_STONE <- create_managed_image("Sprites/PlayerStone.png")
-    BODY_WOOD <- create_managed_image("Sprites/Stone1.png")
+    BODY_WOOD <- create_managed_image("Sprites/Stone5.png")
 
     HEAT_METAL <- create_managed_image("Resources/ramka.png")
     HEAT_STONE <- create_managed_image("Resources/ramka.png")
@@ -48,7 +48,7 @@ let
     //--Bar
     METAL_PLAYER <- create_managed_image("Sprites/PlayerCupper.png")
     STONE_PLAYER <- create_managed_image("Sprites/PlayerStone.png")
-    WOOD_PLAYER <- create_managed_image("Sprites/Stone1.png")
+    WOOD_PLAYER <- create_managed_image("Sprites/Stone8.png")
     //--Bar
     //-----MENU
     WALL_SYMBOL: string = "w"
