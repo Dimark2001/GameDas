@@ -5,6 +5,7 @@ require levelBuild
 require render
 require gameInit
 require menu
+require player
 
 def is_collision(var other: Rect_collider; player: Player)
     if ((player.collider.bottomRightCorner.y > other.topLeftCorner.y)
@@ -116,13 +117,14 @@ def check_triggers(var t: array<Trigger>; var player: Player)
                 if is_collision(t[i].collider, player)
                     //t[i].color = 0xff
                     t[i].is_active = true
-                    update_trigger(t[i], player)
+                    
+                    update_trigger(t[i], player, dir_collision(t[i].collider, player).dof)
                 else
                     t[i].is_active = false
                     
         
     
-def update_trigger(var t: Trigger; var player: Player)
+def update_trigger(var t: Trigger; var player: Player; dof: float)
     if t.is_active
         if t.tag == "jump"
             //b.is_active = false
@@ -140,11 +142,24 @@ def update_trigger(var t: Trigger; var player: Player)
             //print("spawn")
             select_player_menu()
             //is_bar = true
+        if t.tag == "water"
+            if current_type_player == "wood"
+                swimming_player(player) <| dof
+            if current_type_player == "metal" && player.velocity.y == 0f
+                dead_player(player)
+        if t.tag == "lava"
+            if current_type_player == "wood" && player.velocity.y == 0f
+                dead_player(player)
+            if current_type_player == "metal"
+                swimming_player(player) <| dof
     else
         if t.tag == "spawn"
             select_player_menu()
 
-
+def swimming_player(var player: Player; offset: float)
+    print("^")
+    if offset <= player.height && player.velocity.y >= -90f
+        player.velocity.y -= offset
 def player_levelingY(var player: Player; offset: float)
     player.pos.y -=(offset-1f)
     player.velocity.y = 0f
@@ -175,6 +190,8 @@ def update_player(var player: Player; dt: float)
                 jump_player(player)
             jump_pressed = jump
         update_input(player, dt, p_col)
+    else
+        player.velocity = float2(0f,0f)
     check_triggers(triggers, player)
     //print("down   up     right  left  \n")
     //print("{p_col.d}, {p_col.u}, {p_col.r}, {p_col.l}, {player.velocity.y}\n")
@@ -186,6 +203,9 @@ def apply_gravity(var player: Player; dt: float)
     player.velocity.y += gravity*dt*10f
 
 def update_input(var player: Player; dt: float; p_col: tuple<d:bool; u:bool; r:bool; l:bool; dof:float; uo:float; ro:float; lo:float>)
+    if get_key(VK_Z) && p_col.d
+        dead_player(player)
+    
     if (get_key(VK_A) && !p_col.l)
         player.velocity.x = -player.speed*dt*50f
     elif (get_key(VK_D) && !p_col.r)

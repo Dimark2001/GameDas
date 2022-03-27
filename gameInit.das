@@ -3,16 +3,13 @@ require daslib/media
 
 require globalVarAndStruct
 def restart_player(var player: Player; pos: float2; height:float; width:float; var type_player_bar: array<Type_Player_Bar>)
-    //delete_image_player()
-    //is_restart = true
-    //clear(player.type_player)
     player.pos = pos//float2(80,100)
     player.start_pos = pos//float2(80,100)
     player.velocity = float2(0,0)
     player.speed = 400f
     player.force_jump = 450f//*gravity
-    player.height = height//80f // выс коллайдера и спрайта
-    player.width = width //80f
+    player.height = height // выс коллайдера и спрайта
+    player.width = width
     offsetRL = player.height/10f
     offsetDU = player.width/100f
     spawn_station.open = false
@@ -36,11 +33,9 @@ def restart_player(var player: Player)
     player.pos = player.start_pos
     player.velocity = float2(0,0)
     spawn_station.open = false
-    //update_type_player(player, type_player_bar)
 
 
 def select_player(var index: int; active:bool = false)
-    //if length(player.type_player) > 0
     unselect_player()
     
     select_index = index
@@ -49,13 +44,12 @@ def select_player(var index: int; active:bool = false)
     t.active = true
     print("{t.name}=select\n")
     if active && spawn_station.type_player[index].count > 0
-        //spawn_station.type_player[index].count--
         spawn_station.open = true
         t.active = true
     else
         spawn_station.open = false
     if t.active
-        print("----")
+        current_type_player = t.name
         if t.name == "metal"
             body := BODY_METAL
             mask := MASK_METAL

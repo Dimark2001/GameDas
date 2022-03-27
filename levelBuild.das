@@ -18,7 +18,14 @@ def read_level() : array<Level>
     var type_count1 = [[int 10]]
     var type_count2 = [[int 3; 2; 1; 0]]
     var type_count3 = [[int 3; 2]]
+
+    l0.level_name = "name_level1"
+    l1.level_name = "name_level2"
+    l2.level_name = "name_level3"
     
+    l0.biom = "grass"
+    l1.biom = "lava"
+    l2.biom = "stone"
     push(l0.type_name, type_name1)
     push(l1.type_name, type_name2)
     push(l2.type_name, type_name3)
@@ -27,6 +34,8 @@ def read_level() : array<Level>
     push(l1.type_count, type_count2)
     push(l2.type_count, type_count3)
 
+    
+
     var mL0 =  [[string "w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
     var mL1 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
     var mL2 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
@@ -34,10 +43,10 @@ def read_level() : array<Level>
     var mL4 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"v";"w";"-";"-";"w";"-";"-";"w";"-";"-";"-";"w"]]
     var mL5 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"v";"w";"-";"-";"-";"w";"-";"-";"w";"-";"-";"-";"w"]]
     var mL6 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w";"c";"-";"w";"-";"-";"-";"w"]]
-    var mL7 =  [[string "w";"-";"-";"-";"-";"v";"v";"v";"v";"-";"-";"-";"-";"w";"v";"v";"w";"-";"-";"-";"w"]]
-    var mL8 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"v";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
-    var mL9 =  [[string "w";"-";"-";"-";"-";"v";"v";"-";"-";"-";"v";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
-    var mL10 = [[string "w";"p";"-";"-";"-";"w";"w";"v";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
+    var mL7 =  [[string "w";"-";"-";"-";"-";"-";"-";"v";"v";"-";"-";"-";"-";"w";"v";"v";"w";"-";"-";"-";"w"]]
+    var mL8 =  [[string "w";"-";"-";"-";"-";"-";"v";"-";"-";"v";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
+    var mL9 =  [[string "w";"-";"-";"-";"c";"v";"v";"-";"-";"-";"v";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
+    var mL10 = [[string "w";"p";"-";"-";"w";"w";"w";"v";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
     var mL11 = [[string "w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
 
     var m1L0 =  [[string "w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
@@ -48,10 +57,9 @@ def read_level() : array<Level>
     var m1L5 =  [[string "w";"v";"v";"v";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
     var m1L6 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
     var m1L7 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
-    var m1L8 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
-    var m1L9 =  [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
-    var m1L10 = [[string "w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"c";"w"]]
-
+    var m1L8 =  [[string "w";"-";"-";"v";"l";"l";"l";"l";"v";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
+    var m1L9 =  [[string "w";"-";"-";"w";"l";"l";"l";"l";"w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"w"]]
+    var m1L10 = [[string "w";"-";"-";"w";"l";"l";"l";"l";"w";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"c";"w"]]
     var m1L11 = [[string "w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
 
     var m2L0 =  [[string "w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w";"w"]]
@@ -124,6 +132,7 @@ def load_level(var index: int)
         current_level = index
     clear_level()
     build_level(read_level()[index])
+    name_current_level = read_level()[index].level_name
     loading_level = false
 
 def build_level(level: Level)
@@ -141,7 +150,7 @@ def build_level(level: Level)
         pos_x++
 
 def create_tilemap(level: Level; tile: string; tile_pos: float2)
-    
+    aplay_biom_level(level.biom)
     var type_name := level.type_name
     var type_count := level.type_count
     var mesh := level.mesh_level
@@ -151,9 +160,12 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
     var scale_tile = float2(HEIGHT_SCREEN/height_level, HEIGHT_SCREEN/height_level)
     var global_tile_pos = tile_pos*(scale_tile)
     if tile == WALL_SYMBOL
-        create_wall(global_tile_pos, scale_tile, BRICK_COLOR, BRICK_IMAGE)
-    if tile == WALL_SYMBOL8
-        create_wall(global_tile_pos, scale_tile, BRICK_COLOR, BRICK_IMAGE8)
+        create_wall(global_tile_pos, scale_tile, BRICK_COLOR, WALL_IMAGE)
+    elif tile == WALL_SYMBOL8
+        create_wall(global_tile_pos, scale_tile, BRICK_COLOR, WALL_IMAGE8)
+
+    elif tile == LAVA_SYMBOL
+        create_trigger(global_tile_pos, scale_tile, make_color(1f,0f,0f,0.3f), "lava", TRIGGER_IMAGE)
     elif tile == PLAYER_SYMBOL
         create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "spawn", TRIGGER_IMAGE)
         //create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "spawn", SPAWN_STATION_IMAGE)
@@ -168,7 +180,16 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
         //create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "tp", TRIGGER_IMAGE)
     elif tile == CLOSE_SYMBOL
         create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "nextLevel", SPAWN_STATION_IMAGE)
-    
+def aplay_biom_level(b:string)
+    if b == "grass"
+        WALL_IMAGE = GRASS_WALL_IMAGE
+        WALL_IMAGE8 = GRASS_WALL_IMAGE8
+    if b == "stone"
+        WALL_IMAGE = STONE_WALL_IMAGE
+        WALL_IMAGE8 = STONE_WALL_IMAGE8
+    if b == "lava"
+        WALL_IMAGE = LAVA_WALL_IMAGE
+        WALL_IMAGE8 = LAVA_WALL_IMAGE8
 def create_wall(var pos: float2; scale: float2; color: uint; image: ImageHandle)
     var new_wall: Wall
     new_wall.color = color

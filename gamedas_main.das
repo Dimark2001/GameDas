@@ -35,8 +35,6 @@ def act(dt: float)
     
     load_menu()
         
-    if get_key_down(VK_Z)
-        dead_player(player)
     fps_counter = 1.0f / dt
     return
 [export]
