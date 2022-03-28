@@ -1,0 +1,12 @@
+[ {
+    "walls": [
+    ["7","8","9"],
+    ["4","5","6"],
+    ["1","2","3"]
+  ],
+  "level_name": "level1",
+  "type_name": ["metal","wood","stone"],
+  "type_count": [4,2,3],
+  "biom": "lava"
+}
+]

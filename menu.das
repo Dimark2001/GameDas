@@ -68,7 +68,7 @@ def game_over_menu()
     create_back_menu(float2(250, 150), float2(WIDTH_SCREEN-500, HEIGHT_SCREEN-300), BACK_MENU_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10,10))
     create_label("GAMEOVER", "mono", 100f, float2(float(WIDTH_SCREEN)/2f, 100f))
 def create_bar(pos: float2; elements: array<Type_Player_Bar>; count_window: int; scale_window: float)
-    create_label(name_current_level, "mono", 100f, float2(WIDTH_SCREEN/2, 100), true)
+    create_label(name_current_level, "mono", 45f, float2(float(WIDTH_SCREEN)/2f, 100f), true)
     if get_key_down(VK_D)
         selected++
     elif get_key_down(VK_A)
@@ -184,7 +184,7 @@ def create_label(text: string; font: string; font_size: float; pos: float2; cent
     var new_text: Label
     new_text.text = text
     new_text.font = font
-    new_text.pos = pos - (center ? float2((font_size*float(length(text)))/4f, 0f) : float2(0f, 0f))
+    new_text.pos = pos - (center ? float2((font_size*float(length(text)))/3.3f, 0f) : float2(0f, 0f))
     new_text.font_size = font_size
     push_clone(labels, new_text)
 

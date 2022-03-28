@@ -55,7 +55,7 @@ def render_labels(var labels: array<Label>)
     for l in labels
         set_font_name(l.font)
         set_font_size(l.font_size)
-        text_out(l.pos.x, l.pos.y, l.text, TEXT_MENU_COLOR)
+        text_out(l.pos.x, l.pos.y, l.text, make_color(0f,1f,1f,1f))
 
 def render_level(var walls: array<Wall>; var triggers: array<Trigger>; var buttons_menu: array<Button_menu>)
     render_walls(walls)
