@@ -163,6 +163,7 @@ struct Button_menu
     color_click: uint
     color_def: uint
     tag: string
+    value: int = -1
     pressed: bool = true
     text: Label
     //image

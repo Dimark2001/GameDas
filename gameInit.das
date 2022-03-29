@@ -3,7 +3,7 @@ require daslib/media
 
 require globalVarAndStruct
 def restart_player(var player: Player; pos: float2; height:float; width:float; var type_player_bar: array<Type_Player_Bar>)
-    
+    flip_restart(player)
     player.pos = pos//float2(80,100)
     player.start_pos = pos//float2(80,100)
     player.velocity = float2(0,0)
@@ -17,6 +17,7 @@ def restart_player(var player: Player; pos: float2; height:float; width:float; v
     update_type_player(player, type_player_bar)
 
 def update_type_player(var player: Player; var type_player_bar: array<Type_Player_Bar>)
+    flip_restart(player)
     clear(player.type_player)
     var new_types_player: array<Type_Player>
     print("{type_player_bar[0].name} <----\n")
@@ -30,21 +31,14 @@ def update_type_player(var player: Player; var type_player_bar: array<Type_Playe
         push_clone(image_player_in_bar, type_player_bar[i].image )
         push_clone(player.type_player, new_type)
 def restart_player(var player: Player)
-    if  player.flip
-        body |> flip_image_x()
-        mask |> flip_image_x()
-        heat |> flip_image_x()
-        legs |> flip_image_x()
-        legs |> flip_image_x()
-    def_flip = false
-    player.flip = false
+    flip_restart(player)
     player.pos = player.start_pos
     player.velocity = float2(0,0)
     spawn_station.open = false
 
 
 def select_player(var index: int; active:bool = false)
-    
+
     unselect_player()
     
     select_index = index
@@ -87,3 +81,12 @@ def select_player(var index: int; active:bool = false)
 def unselect_player()
     for i in range(0, length(player.type_player)) 
         player.type_player[i].active = false
+def flip_restart(var player:Player)
+    if  player.flip
+        body |> flip_image_x()
+        mask |> flip_image_x()
+        heat |> flip_image_x()
+        legs |> flip_image_x()
+        legs |> flip_image_x()
+    def_flip = false
+    player.flip = false

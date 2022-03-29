@@ -54,6 +54,33 @@ def settings_menu()
     create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2-200), float2(500, 100), "1", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
     create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2), float2(500, 100), "2", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 3f)
     create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2+200), float2(500, 100), "3", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 3f)
+def select_levels_menu()
+
+    close_menu()
+    var count_level = length(read_level())
+    print("{count_level}<-count\n")
+    var square_button = HEIGHT_SCREEN*HEIGHT_SCREEN / count_level
+    var scale_button = sqrt(float(square_button))
+    print("{scale_button}<-scale\n")
+    
+    //
+    var max_count_levelY = float(HEIGHT_SCREEN)/scale_button
+    var max_count_levelX = float(WIDTH_SCREEN)/scale_button//count_level/int(max_count_levelY)
+
+    print("X{int(max_count_levelX)}X\n")
+    print("Y{int(max_count_levelY)}Y\n")
+    //var scale_button = 50f//HEIGHT_SCREEN/max_count_levelY
+    var osX,osY:float
+    for i in range(count_level)
+        if i % int(max_count_levelX) == 0
+            osY++
+            osX = 0f
+        else
+            osX++
+        var pos = float2(scale_button*osX, scale_button*osY-scale_button) + float2(scale_button/1.5f, scale_button/2f)
+        //reate_back_menu( , , 5f)
+        create_button_menu(pos, float2(scale_button/1.1, scale_button/1.1), "Levels", BUTTON_MENU_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0x0, i)//var pos: float2; scale: float2; tag:string; color_def: uint; color_cross: uint; color_click: uint
+    
 
 def select_player_menu()
 
@@ -123,6 +150,22 @@ def create_button_menu(var pos: float2; scale: float2; tag:string; color_def: ui
     button_menu.text.text = tag
     button_menu.pressed = true
     button_menu.tag = tag
+    button_menu.color = color_def
+    button_menu.color_def = color_def
+    button_menu.color_cross = color_cross
+    button_menu.color_click = color_click
+    button_menu.pos = pos - scale/2f
+    button_menu.collider.topLeftCorner = pos
+    button_menu.collider.bottomRightCorner = pos + scale/2f
+    push_clone(buttons_menu, button_menu)
+def create_button_menu(var pos: float2; scale: float2; tag:string; color_def: uint; color_cross: uint; color_click: uint; value:int)
+    var button_menu: Button_menu
+    button_menu.text.font_size = 50f//scale.x//3f
+    button_menu.text.pos = pos - float2((button_menu.text.font_size*float(length(tag)))/4f, scale.y/4f)
+    button_menu.text.text = tag
+    button_menu.pressed = true
+    button_menu.tag = tag
+    button_menu.value = value
     button_menu.color = color_def
     button_menu.color_def = color_def
     button_menu.color_cross = color_cross
@@ -223,6 +266,12 @@ def button_click(var b: Button_menu)
     if tag == "Restart"
         load_level(current_level)
     if tag == "Settings"
-        settings_menu()
         //settings_menu()
-    
+        select_levels_menu()
+    if tag == "Levels"
+        //settings_menu()
+        if b.value >= 0
+            load_level(b.value)
+        
+    // if tag as int
+    //     load_level(int(tag))

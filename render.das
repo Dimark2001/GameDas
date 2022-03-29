@@ -47,7 +47,6 @@ def render_player(var player: Player)
     heat |> draw_image(posX_heat, posY_heat, colorWhite, float2(width, height))
     legs |> draw_image(posX_legs_l, posY_legs_l, colorWhite, float2(width, height))
     legs |> draw_image(posX_legs_r, posY_legs_r, colorWhite, float2(width, height))
-    print("{player.flip}\n")
     
     
     //fill_rect( , )
@@ -83,8 +82,10 @@ def render_buttons_menu(var b_menu: array<Button_menu>)
             b.collider.image |> draw_image(b.pos.x, b.pos.y, b.color, float2(width, height))
         set_font_name("sans")
         set_font_size(b.text.font_size)
-        if b.tag != "false"
+        if b.tag != "false" && b.tag != "Levels"
             text_out(b.text.pos.x, b.text.pos.y, b.tag, TEXT_MENU_COLOR)
+        else
+            text_out(b.text.pos.x, b.text.pos.y, string(b.value), TEXT_MENU_COLOR)
         //text_out(100, 520, "Open Sans", make_color(0.2, 0.3, 0.1))
 def render_labels(var labels: array<Label>)
     for l in labels
