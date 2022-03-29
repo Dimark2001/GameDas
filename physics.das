@@ -148,11 +148,11 @@ def update_trigger(var t: Trigger; var player: Player; dof: float)
             if current_type_player == "metal" && player.velocity.y == 0f
                 dead_player(player)
         if t.tag == "lava"
-            if current_type_player == "wood" && player.velocity.y == 0f
+            if current_type_player != "metal" && current_type_player != "stone" && player.velocity.y == 0f
                 dead_player(player)
             if current_type_player == "metal"
                 swimming_player(player) <| dof
-            if current_type_player == "stone"
+            elif current_type_player == "stone"
                 if player.velocity.y > 0F
                     player.velocity.y /= 1.1f
                 else
