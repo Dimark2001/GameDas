@@ -153,7 +153,10 @@ def update_trigger(var t: Trigger; var player: Player; dof: float)
             if current_type_player == "metal"
                 swimming_player(player) <| dof
             if current_type_player == "stone"
-                player.velocity.y /= 1.1f
+                if player.velocity.y > 0F
+                    player.velocity.y /= 1.1f
+                else
+                    player.velocity.y *= 1.005f
     else
         if t.tag == "spawn"
             select_player_menu()
