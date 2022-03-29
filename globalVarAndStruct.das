@@ -17,7 +17,7 @@ let
     PLAYER_IMAGE <- create_managed_image("Sprites/PlayerPortal.png")
     TRIGGER_IMAGE <- create_managed_image("Resources/ramka.png")
     SPAWN_STATION_IMAGE <- create_managed_image("Sprites/Spawn.png")
-    EXIT_LEVEL <- create_managed_image("Sprites/Portal1.png")
+    EXIT_LEVEL <- create_managed_image("Sprites/portal1.png")
 
     //BACK_IMAGE <- create_managed_image("Resources/ramka.png")
 
@@ -91,6 +91,8 @@ var
     tp_pos:float2
     jump_pressed: bool = false
     is_jump:bool = false
+    new_flip:bool = false
+    def_flip:bool = false
     update_bar: bool
     offsetRL: float //погрешность для боковых столкновений
     offsetDU: float //погрешность для нижн./верх. столкновений
@@ -112,6 +114,7 @@ var
     mask <- create_managed_image("Resources/EMPTY.png")
     heat <- create_managed_image("Resources/EMPTY.png")
     legs <- create_managed_image("Resources/EMPTY.png")
+    dead <- create_managed_image("Resources/EMPTY.png")
 
     spawn <- create_managed_image("Resources/EMPTY.png")
 
@@ -144,6 +147,7 @@ struct Player
     width: float = 100f
     start_pos: float2
     type_player: array<Type_Player>
+    flip: bool
 
 struct Trigger
     collider: Rect_collider
