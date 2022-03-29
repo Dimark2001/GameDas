@@ -8,42 +8,47 @@ let
     MOVE_RIGHT_KEY = VK_D
     MOVE_LEFT_KEY = VK_A
 
-    BACK_COLOR = make_color(0.4F,0.1F,0.1F,1F)
+    BACK_COLOR = make_color(0.3F,0.3F,0.3F,0.6F)
     BRICK_COLOR = make_color(1F,1F,1F,1F)
-    PLAYER_COLOR = make_color(0F,0F,1F,1F)
-    TRIGGER_COLOR = make_color(0.7F,0.2F,1F,1F)
-    SPAWN_STATION_COLOR =  make_color(1F,1F,1F,1F)
+    PLAYER_COLOR = make_color(1F,1F,1F,1F)
+    TRIGGER_COLOR = make_color(1F,1F,1F,1F)
+    SPAWN_STATION_COLOR =  make_color(0F,0F,1F,1F)
 
-    PLAYER_IMAGE <- create_managed_image("Sprites/PlayerStone.png")
+    PLAYER_IMAGE <- create_managed_image("Sprites/PlayerPortal.png")
     TRIGGER_IMAGE <- create_managed_image("Resources/ramka.png")
-    SPAWN_STATION_IMAGE <- create_managed_image("Sprites/portal1.png")
+    SPAWN_STATION_IMAGE <- create_managed_image("Sprites/Spawn.png")
+    EXIT_LEVEL <- create_managed_image("Sprites/Portal1.png")
 
     //BACK_IMAGE <- create_managed_image("Resources/ramka.png")
 
-    LAVA_WALL_IMAGE <- create_managed_image("Sprites/lava.png")
-    LAVA_WALL_IMAGE8 <- create_managed_image("Sprites/lava8.png")
+    STONE_WALL_IMAGE <- create_managed_image("Sprites/lava.png")
+    STONE_WALL_IMAGE8 <- create_managed_image("Sprites/lava8.png")
 
     GRASS_WALL_IMAGE <- create_managed_image("Sprites/grass5.png")
     GRASS_WALL_IMAGE8 <- create_managed_image("Sprites/grass8.png")
 
-    STONE_WALL_IMAGE <- create_managed_image("Sprites/Stone5.png")
-    STONE_WALL_IMAGE8 <- create_managed_image("Sprites/Stone8.png")
+    LAVA_WALL_IMAGE <- create_managed_image("Sprites/Stone5.png")
+    LAVA_WALL_IMAGE8 <- create_managed_image("Sprites/Stone8.png")
 
     MASK_METAL <- create_managed_image("Sprites/MaskSvar.png")
-    MASK_STONE <- create_managed_image("Resources/flag.png")
+    MASK_LAVA <- create_managed_image("Sprites/MaskLava.png")
     MASK_WOOD <- create_managed_image("Resources/EMPTY.png")
+    MASK_PORTAL <- create_managed_image("Sprites/MaskPortal.png")
 
     BODY_METAL <- create_managed_image("Sprites/PlayerCupper.png")
-    BODY_STONE <- create_managed_image("Sprites/PlayerStone.png")
+    BODY_LAVA <- create_managed_image("Sprites/PlayerLava.png")
     BODY_WOOD <- create_managed_image("Sprites/Stone5.png")
+    BODY_PORTAL <- create_managed_image("Sprites/PlayerPortal.png")
 
     HEAT_METAL <- create_managed_image("Resources/ramka.png")
-    HEAT_STONE <- create_managed_image("Resources/ramka.png")
+    HEAT_LAVA <- create_managed_image("Resources/ramka.png")
     HEAT_WOOD <- create_managed_image("Resources/ramka.png")
+    HEAT_PORTAL <- create_managed_image("Resources/ramka.png")
 
     LEGS_METAL <- create_managed_image("Resources/ramka.png")
-    LEGS_STONE <- create_managed_image("Resources/ramka.png")
+    LEGS_LAVA <- create_managed_image("Resources/ramka.png")
     LEGS_WOOD <- create_managed_image("Resources/ramka.png")
+    LEGS_PORTAL <- create_managed_image("Resources/ramka.png")
 
     //-----MENU
     BUTTON_MENU_COLOR = make_color(1F,0F,0F,1F)
@@ -55,8 +60,9 @@ let
     TEXT_MENU_COLOR = make_color(0F,0F,0F,1F)
     //--Bar
     METAL_PLAYER <- create_managed_image("Sprites/PlayerCupper.png")
-    STONE_PLAYER <- create_managed_image("Sprites/PlayerStone.png")
+    LAVA_PLAYER <- create_managed_image("Sprites/PlayerStone.png")
     WOOD_PLAYER <- create_managed_image("Sprites/Stone8.png")
+    PORTAL_PLAYER <- create_managed_image("Sprites/PlayerPortal.png")
     //--Bar
     //-----MENU
     WALL_SYMBOL: string = "w"

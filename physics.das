@@ -152,13 +152,15 @@ def update_trigger(var t: Trigger; var player: Player; dof: float)
                 dead_player(player)
             if current_type_player == "metal"
                 swimming_player(player) <| dof
+            if current_type_player == "stone"
+                player.velocity.y /= 1.1f
     else
         if t.tag == "spawn"
             select_player_menu()
 
 def swimming_player(var player: Player; offset: float)
     print("^")
-    if offset <= player.height && player.velocity.y >= -90f
+    if offset <= player.height && player.velocity.y >= -120f
         player.velocity.y -= offset
 def player_levelingY(var player: Player; offset: float)
     player.pos.y -=(offset-1f)

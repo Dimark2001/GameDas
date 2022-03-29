@@ -56,37 +56,21 @@ def select_player(var index: int; active:bool = false)
             heat := HEAT_METAL
             legs := LEGS_METAL
         if t.name == "stone"
-            body := BODY_STONE
-            mask := MASK_STONE
-            heat := HEAT_STONE
-            legs := LEGS_STONE
+            body := BODY_LAVA
+            mask := MASK_LAVA
+            heat := HEAT_LAVA
+            legs := LEGS_LAVA
         if t.name == "wood"
             body := BODY_WOOD
             mask := MASK_WOOD
             heat := HEAT_WOOD
             legs := LEGS_WOOD
+        if t.name == "portal"
+            body := BODY_PORTAL
+            mask := MASK_PORTAL
+            heat := HEAT_PORTAL
+            legs := LEGS_PORTAL
 
 def unselect_player()
     for i in range(0, length(player.type_player)) 
         player.type_player[i].active = false
-        
-// def delete_image_player()
-//     delete body
-//     delete mask
-//     delete heat
-//     delete legs
-
-//     delete BODY_METAL
-//     delete MASK_METAL
-//     delete HEAT_METAL
-//     delete LEGS_METAL
-
-//     delete BODY_STONE
-//     delete MASK_STONE
-//     delete HEAT_STONE
-//     delete LEGS_STONE
-
-//     delete BODY_WOOD
-//     delete MASK_WOOD
-//     delete HEAT_WOOD
-//     delete LEGS_WOOD
