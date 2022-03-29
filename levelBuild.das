@@ -33,7 +33,6 @@ def build_level(level: Level)
     var pos_x:float = 0f
     for x in mesh
         for y in x
-            print(">{y}<")
             create_tilemap(level, y, float2(pos_y, pos_x))
             pos_y++
             

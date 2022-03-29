@@ -23,7 +23,7 @@ def read(path: string)
             var osX := osY[numberY] as _array
             for i in range(length(osX))
                 push_clone(new_level.mesh_level[numberY], osX[i] as _string)
-        print(">{new_level.mesh_level}<\n")
+        //print(">{new_level.mesh_level}<\n")
         for i in y["type_name"] as _array
             push(new_level.type_name, i as _string)
         for j in y["type_count"] as _array

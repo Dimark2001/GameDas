@@ -8,13 +8,48 @@ def render_player(var player: Player)
     var height = player.collider.bottomRightCorner.y - player.collider.topLeftCorner.y
     var width = player.collider.bottomRightCorner.x - player.collider.topLeftCorner.x
     //fill_rect(player.pos.x, player.pos.y, width, height, PLAYER_COLOR)
+    var colorWhite = make_color(1f,1f,1f,1f)
+    // var posX_body = player.pos.x
+    // var posX_mask = player.pos.x + height/2f
+    // var posX_heat = player.pos.x - height/2f
+    // var posX_legs_l = player.pos.x - width/2f
+    // var posX_legs_r = player.pos.x + width/2f
+    var posX_body,posX_mask,posX_heat, posX_legs_l,posX_legs_r:float
 
+    var posY_body = player.pos.y
+    var posY_mask = player.pos.y-width/2f
+    var posY_heat = player.pos.y-width/2f
+    var posY_legs_l = player.pos.y + height/2f
+    var posY_legs_r = player.pos.y + height/2f
+    if new_flip
+        
+        body |> flip_image_x()
+        mask |> flip_image_x()
+        heat |> flip_image_x()
+        legs |> flip_image_x()
+        legs |> flip_image_x()
+        new_flip = false
+    if player.flip 
+        posX_body = player.pos.x
+        posX_mask = player.pos.x - height/2f
+        posX_heat = player.pos.x + height/2f
+        posX_legs_l = player.pos.x + width/2f
+        posX_legs_r = player.pos.x - width/2f
+    else
+        posX_body = player.pos.x
+        posX_mask = player.pos.x + height/2f
+        posX_heat = player.pos.x - height/2f
+        posX_legs_l = player.pos.x - width/2f
+        posX_legs_r = player.pos.x + width/2f
     
-    body |> draw_image(player.pos.x, player.pos.y, make_color(1f,1f,1f,1f), float2(width, height))
-    mask |> draw_image(player.pos.x + height/2f, player.pos.y-width/2f, make_color(1f,1f,1f,1f), float2(width, height))
-    heat |> draw_image(player.pos.x - height/2f, player.pos.y-width/2f, make_color(1f,1f,1f,1f), float2(width, height))
-    legs |> draw_image(player.pos.x - width/2f, player.pos.y + height/2f, make_color(1f,1f,1f,1f), float2(width, height))
-    legs |> draw_image(player.pos.x + width/2f, player.pos.y + height/2f, make_color(1f,1f,1f,1f), float2(width, height))
+    body |> draw_image(posX_body, posY_body, colorWhite, float2(width, height))
+    mask |> draw_image(posX_mask, posY_mask, colorWhite, float2(width, height))
+    heat |> draw_image(posX_heat, posY_heat, colorWhite, float2(width, height))
+    legs |> draw_image(posX_legs_l, posY_legs_l, colorWhite, float2(width, height))
+    legs |> draw_image(posX_legs_r, posY_legs_r, colorWhite, float2(width, height))
+    print("{player.flip}\n")
+    
+    
     //fill_rect( , )
 
 def render_walls(var walls: array<Wall>)

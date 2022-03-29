@@ -176,6 +176,13 @@ def update_player(var player: Player; dt: float)
     player.pos.x += player.velocity.x*dt
     player.pos.y += player.velocity.y*dt
 
+    if player.velocity.x > 0f
+        player.flip = false
+    if player.velocity.x < 0f
+        player.flip = true
+    if def_flip != player.flip
+        def_flip = player.flip
+        new_flip = true
     let jump = get_key(VK_SPACE)//int(get_mouse_scroll_delta()) != 0 ? true : false 
     var p_col = check_collisions(walls, player)
     //print("{p_col.go}\n")
@@ -211,6 +218,7 @@ def update_input(var player: Player; dt: float; p_col: tuple<d:bool; u:bool; r:b
     if (get_key(VK_A) && !p_col.l)
         player.velocity.x = -player.speed*dt*50f
     elif (get_key(VK_D) && !p_col.r)
+        
         player.velocity.x = player.speed*dt*50f//player.speed*dt
     else
         player.velocity.x = 0f
