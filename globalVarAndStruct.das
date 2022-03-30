@@ -49,15 +49,15 @@ let
     BODY_WOOD <- create_managed_image("Sprites/Stone5.png")
     BODY_PORTAL <- create_managed_image("Sprites/PlayerPortal.png")
 
-    HEAT_METAL <- create_managed_image("Resources/ramka.png")
-    HEAT_LAVA <- create_managed_image("Resources/ramka.png")
-    HEAT_WOOD <- create_managed_image("Resources/ramka.png")
-    HEAT_PORTAL <- create_managed_image("Resources/ramka.png")
+    HEAT_METAL <- create_managed_image("Resources/EMPTY.png")
+    HEAT_LAVA <- create_managed_image("Resources/EMPTY.png")
+    HEAT_WOOD <- create_managed_image("Resources/EMPTY.png")
+    HEAT_PORTAL <- create_managed_image("Resources/EMPTY.png")
 
-    LEGS_METAL <- create_managed_image("Resources/ramka.png")
-    LEGS_LAVA <- create_managed_image("Resources/ramka.png")
-    LEGS_WOOD <- create_managed_image("Resources/ramka.png")
-    LEGS_PORTAL <- create_managed_image("Resources/ramka.png")
+    LEGS_METAL <- create_managed_image("Resources/EMPTY.png")
+    LEGS_LAVA <- create_managed_image("Resources/EMPTY.png")
+    LEGS_WOOD <- create_managed_image("Resources/EMPTY.png")
+    LEGS_PORTAL <- create_managed_image("Resources/EMPTY.png")
     //
     //End Player
     //
