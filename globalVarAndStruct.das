@@ -31,7 +31,7 @@ let
     LAVA_WALL_IMAGE <- create_managed_image("Sprites/Stone5.png")
     LAVA_WALL_IMAGE8 <- create_managed_image("Sprites/Stone8.png")
 
-    LAVA_W_IMAGE <- create_managed_image("Sprites/LavaWater8.png")
+    LAVA_W_IMAGE <- create_managed_image("Sprites/lavaW8.png")
     WATER_W_IMAGE <- create_managed_image("Sprites/WaterW5.png")
     PORTAL_IN_IMAGE <- create_managed_image("Sprites/portalIN.png")
     PORTAL_OUT_IMAGE <- create_managed_image("Sprites/portalOUT.png")

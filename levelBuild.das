@@ -62,7 +62,6 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
         create_trigger(global_tile_pos, scale_tile*float2(1f,1f), TRIGGER_COLOR, "spawn", SPAWN_STATION_IMAGE)
         //create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "spawn", SPAWN_STATION_IMAGE)
         restart_player(player, global_tile_pos, scale_tile.x, scale_tile.y, create_array_type_player(type_name, type_count))
-
         create_spawn_station(global_tile_pos, scale_tile*float2(1f,1f), TRIGGER_COLOR, create_array_type_player(type_name, type_count))
     elif tile == TRIGGER_SYMBOL
         create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "jump", TRIGGER_IMAGE)
