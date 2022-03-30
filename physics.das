@@ -145,6 +145,8 @@ def update_trigger(var t: Trigger; var player: Player; dof: float)
         if t.tag == "water"
             if current_type_player == "wood"
                 swimming_player(player) <| dof
+            if current_type_player == "portal"
+                swimming_player(player) <| dof
             if current_type_player == "metal" && player.velocity.y == 0f
                 dead_player(player)
         if t.tag == "lava"
