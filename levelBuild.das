@@ -67,10 +67,9 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
     elif tile == TRIGGER_SYMBOL
         create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "jump", TRIGGER_IMAGE)
     elif tile == PORTAL_IN_SYMBOL
-        create_trigger(global_tile_pos, scale_tile, WHITE_COLOR, "tp", PORTAL_IN_IMAGE)
+        create_trigger(global_tile_pos, scale_tile, WHITE_COLOR, "portal", PORTAL_IN_IMAGE)
     elif tile == PORTAL_OUT_SYMBOL
         tp_pos = global_tile_pos
-        //create_trigger(global_tile_pos, scale_tile, WHITE_COLOR, "tp", PORTAL_OUT_IMAGE)
     elif tile == CLOSE_SYMBOL
         create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "nextLevel", EXIT_LEVEL)
 def aplay_biom_level(b:string)
@@ -94,8 +93,9 @@ def create_wall(var pos: float2; scale: float2; color: uint; image: ImageHandle)
     
     push_clone(walls, new_wall)
     
-def create_trigger(var pos: float2; scale: float2; color: uint; tag: string; image: ImageHandle)
+def create_trigger(var pos: float2; scale: float2; color: uint; tag: string; image: ImageHandle; is_render:bool = true)
     var new_trigger: Trigger
+    new_trigger.is_render = is_render
     new_trigger.tag = tag
     new_trigger.color = color
     new_trigger.collider.image := image

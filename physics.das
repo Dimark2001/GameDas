@@ -129,10 +129,9 @@ def update_trigger(var t: Trigger; var player: Player; dof: float)
         if t.tag == "jump"
             //b.is_active = false
             print("b jump")
-        if t.tag == "tp"
+        if t.tag == "portal" && current_type_player == "portal"
             //b.is_active = false
             player.pos = tp_pos
-        
         if t.tag == "nextLevel"
             //b.is_active = false
             ++current_level

@@ -65,10 +65,16 @@ def render_triggers(var triggers: array<Trigger>)
         var height = t.collider.bottomRightCorner.y - t.collider.topLeftCorner.y
         var width = t.collider.bottomRightCorner.x - t.collider.topLeftCorner.x
         t.collider.topLeftCorner = t.pos
-        if t.collider.image.width == 0
-            fill_rect(t.pos.x, t.pos.y, width, height, t.color)
-        else
-            t.collider.image |> draw_image(t.pos.x, t.pos.y, t.color, float2(width, height))
+        if t.tag == "portal" && current_type_player == "portal"
+            if t.collider.image.width == 0
+                fill_rect(t.pos.x, t.pos.y, width, height, t.color)
+            else
+                t.collider.image |> draw_image(t.pos.x, t.pos.y, t.color, float2(width, height))
+        elif t.tag != "portal"
+            if t.collider.image.width == 0
+                fill_rect(t.pos.x, t.pos.y, width, height, t.color)
+            else
+                t.collider.image |> draw_image(t.pos.x, t.pos.y, t.color, float2(width, height))
 
 
 def render_buttons_menu(var b_menu: array<Button_menu>)

@@ -165,6 +165,7 @@ struct Trigger
     collider: Rect_collider
     color: uint
     is_active: bool
+    is_render: bool
     pos: float2
     tag: string
 struct Button_menu
