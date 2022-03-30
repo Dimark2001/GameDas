@@ -13,6 +13,7 @@ let
     PLAYER_COLOR = make_color(1F,1F,1F,1F)
     TRIGGER_COLOR = make_color(1F,1F,1F,1F)
     SPAWN_STATION_COLOR =  make_color(0F,0F,1F,1F)
+    WHITE_COLOR =  make_color(1F,1F,1F,1F)
 
     PLAYER_IMAGE <- create_managed_image("Sprites/PlayerPortal.png")
     TRIGGER_IMAGE <- create_managed_image("Resources/ramka.png")
@@ -30,6 +31,14 @@ let
     LAVA_WALL_IMAGE <- create_managed_image("Sprites/Stone5.png")
     LAVA_WALL_IMAGE8 <- create_managed_image("Sprites/Stone8.png")
 
+    LAVA_W_IMAGE <- create_managed_image("Sprites/LavaWater8.png")
+    WATER_W_IMAGE <- create_managed_image("Sprites/WaterW5.png")
+    PORTAL_IN_IMAGE <- create_managed_image("Sprites/portalIN.png")
+    PORTAL_OUT_IMAGE <- create_managed_image("Sprites/portalOUT.png")
+
+    //
+    //Player
+    //
     MASK_METAL <- create_managed_image("Sprites/MaskSvar.png")
     MASK_LAVA <- create_managed_image("Sprites/MaskLava.png")
     MASK_WOOD <- create_managed_image("Resources/EMPTY.png")
@@ -49,6 +58,9 @@ let
     LEGS_LAVA <- create_managed_image("Resources/ramka.png")
     LEGS_WOOD <- create_managed_image("Resources/ramka.png")
     LEGS_PORTAL <- create_managed_image("Resources/ramka.png")
+    //
+    //End Player
+    //
 
     //-----MENU
     BUTTON_MENU_COLOR = make_color(1F,0F,0F,1F)
