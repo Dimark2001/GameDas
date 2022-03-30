@@ -55,9 +55,9 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
         create_wall(global_tile_pos, scale_tile, BRICK_COLOR, WALL_IMAGE8)
 
     elif tile == LAVA_SYMBOL
-        create_trigger(global_tile_pos, scale_tile, make_color(1f,0f,0f,0.3f), "lava", TRIGGER_IMAGE)
+        create_trigger(global_tile_pos, scale_tile, WHITE_COLOR, "lava", LAVA_W_IMAGE)
     elif tile == WATER_SYMBOL
-        create_trigger(global_tile_pos, scale_tile, make_color(0f,1f,0f,0.3f), "water", TRIGGER_IMAGE)
+        create_trigger(global_tile_pos, scale_tile, WHITE_COLOR, "water", WATER_W_IMAGE)
     elif tile == PLAYER_SYMBOL
         create_trigger(global_tile_pos, scale_tile*float2(1f,1f), TRIGGER_COLOR, "spawn", SPAWN_STATION_IMAGE)
         //create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "spawn", SPAWN_STATION_IMAGE)
@@ -67,10 +67,10 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
     elif tile == TRIGGER_SYMBOL
         create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "jump", TRIGGER_IMAGE)
     elif tile == PORTAL_IN_SYMBOL
-        create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "tp", TRIGGER_IMAGE)
+        create_trigger(global_tile_pos, scale_tile, WHITE_COLOR, "tp", PORTAL_IN_IMAGE)
     elif tile == PORTAL_OUT_SYMBOL
         tp_pos = global_tile_pos
-        //create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "tp", TRIGGER_IMAGE)
+        //create_trigger(global_tile_pos, scale_tile, WHITE_COLOR, "tp", PORTAL_OUT_IMAGE)
     elif tile == CLOSE_SYMBOL
         create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "nextLevel", EXIT_LEVEL)
 def aplay_biom_level(b:string)
