@@ -14,6 +14,7 @@ def read_level() : array<Level>
 
 def load_level(var index: int)  
     loading_level = true
+    buttons_count_active = 0
     max_levels = length(read_level())
     spawn_station.open = false
     update_bar = true
@@ -49,8 +50,12 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
     var border_level: float2 = float2(100f,100f)
     var scale_tile = float2(HEIGHT_SCREEN/height_level, HEIGHT_SCREEN/height_level)
     var global_tile_pos = tile_pos*(scale_tile)
+    if tile == BUTTON_CLOSE_SYMBOL
+        buttons_count_active++
+        create_trigger(global_tile_pos, scale_tile, WHITE_COLOR, "button", BUTTON_CLOSE_IMAGE)
     if tile == WALL_SYMBOL
         create_wall(global_tile_pos, scale_tile, BRICK_COLOR, WALL_IMAGE)
+
     elif tile == WALL_SYMBOL8
         create_wall(global_tile_pos, scale_tile, BRICK_COLOR, WALL_IMAGE8)
 
@@ -70,7 +75,8 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
     elif tile == PORTAL_OUT_SYMBOL
         tp_pos = global_tile_pos
     elif tile == CLOSE_SYMBOL
-        create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "nextLevel", EXIT_LEVEL)
+        push(pos_close, global_tile_pos)
+        push(scale_close, scale_tile)
 def aplay_biom_level(b:string)
     if b == "grass"
         WALL_IMAGE = GRASS_WALL_IMAGE
@@ -133,4 +139,6 @@ def clear_level()
     clear(walls)
     clear(triggers)
     clear(buttons_menu)
+    clear(pos_close)
+    clear(scale_close)
     is_menu = false

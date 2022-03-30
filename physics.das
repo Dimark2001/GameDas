@@ -129,10 +129,17 @@ def update_trigger(var t: Trigger; var player: Player; dof: float)
         if t.tag == "jump"
             //b.is_active = false
             print("b jump")
+        if t.tag == "button" && t.count_touch == 0
+            t.count_touch++
+            buttons_count_active--
+            t.color = 0xff0000ff
+        if buttons_count_active == 0
+            for i in range(length(pos_close))
+                create_trigger(pos_close[i], scale_close[i], TRIGGER_COLOR, "nextLevel", EXIT_LEVEL)
         if t.tag == "portal" && current_type_player == "portal"
             //b.is_active = false
             player.pos = tp_pos
-        if t.tag == "nextLevel"
+        if t.tag == "nextLevel" && buttons_count_active == 0
             //b.is_active = false
             ++current_level
             load_level(current_level)
