@@ -28,9 +28,10 @@ let
     GRASS_WALL_IMAGE <- create_managed_image("Sprites/grass5.png")
     GRASS_WALL_IMAGE8 <- create_managed_image("Sprites/grass8.png")
 
+    BUTTON_CLOSE_IMAGE <- create_managed_image("Sprites/Spawn.png")
     LAVA_WALL_IMAGE <- create_managed_image("Sprites/Stone5.png")
     LAVA_WALL_IMAGE8 <- create_managed_image("Sprites/Stone8.png")
-    LAVA_W_IMAGE <- create_managed_image("Sprites/LavaW5.png")
+    LAVA_W_IMAGE <- create_managed_image("Sprites/lavaW5.png")
     WATER_W_IMAGE <- create_managed_image("Sprites/WaterW5.png")
     PORTAL_IN_IMAGE <- create_managed_image("Sprites/portalIN.png")
     PORTAL_OUT_IMAGE <- create_managed_image("Sprites/portalOUT.png")
@@ -76,6 +77,7 @@ let
     PORTAL_PLAYER <- create_managed_image("Sprites/PlayerPortal.png")
     //--Bar
     //-----MENU
+    BUTTON_CLOSE_SYMBOL: string = "b"
     WALL_SYMBOL: string = "w"
     WALL_SYMBOL8: string = "v"
     LAVA_SYMBOL: string = "l"
@@ -112,10 +114,13 @@ var
     loading_level: bool
     walls: array<Wall> 
     triggers: array<Trigger> 
+    buttons_count_active: int
     buttons_menu: array<Button_menu> 
     is_menu:bool
     is_gameover:bool
     current_type_player:string
+    pos_close:array<float2>
+    scale_close:array<float2>
 
     select_index:int
     labels: array<Label>
@@ -163,6 +168,7 @@ struct Player
 struct Trigger
     collider: Rect_collider
     color: uint
+    count_touch:int
     is_active: bool
     is_render: bool
     pos: float2
