@@ -102,7 +102,7 @@ def game_over_menu()
 
     create_label("GAMEOVER", "mono", 100f, float2(float(WIDTH_SCREEN)/2f, 90f))
 def create_bar(pos: float2; elements: array<Type_Player_Bar>; count_window: int; scale_window: float)
-    create_label(name_current_level, "mono", 45f, float2(float(WIDTH_SCREEN)/2f, 100f), true)
+    create_label(name_current_level, "mono", 45f, float2(100f, 400f), false)
     if get_key_down(VK_D)
         selected++
     elif get_key_down(VK_A)
