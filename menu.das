@@ -30,9 +30,10 @@ def main_menu()
     create_back_menu(float2(0, 0), float2(WIDTH_SCREEN, HEIGHT_SCREEN), BACK_MENU_COLOR1, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(0,0))
     create_back_menu(float2(100, 100), float2(WIDTH_SCREEN-200, HEIGHT_SCREEN-200), BACK_MENU_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10,10))
     
-    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2-200), float2(500, 100), "Start", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
-    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2), float2(500, 100), "Settings", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
-    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2+200), float2(500, 100), "Exit", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2-230), float2(500, 100), "Start", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2-115), float2(500, 100), "Settings", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2), float2(500, 100), "Exit", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2+130), float2(500, 100), "Level select", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
 
 def pause_menu()
     close_menu()
@@ -40,9 +41,9 @@ def pause_menu()
     
     create_back_menu(float2(250, 150), float2(WIDTH_SCREEN-500, HEIGHT_SCREEN-300), BACK_MENU_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10,10))
     
-    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2-200), float2(500, 100), "Start", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
-    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2), float2(500, 100), "Exit", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 3f)
-    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2+200), float2(500, 100), "Restart", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 3f)
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2-200), float2(500, 100), "Restart", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2), float2(500, 100), "Level select", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2+200), float2(500, 100), "Exit", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
 
 def settings_menu()
     close_menu()
@@ -51,9 +52,9 @@ def settings_menu()
 
     create_back_menu(float2(250, 150), float2(WIDTH_SCREEN-500, HEIGHT_SCREEN-300), BACK_MENU_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10,10))
     
-    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2-200), float2(500, 100), "1", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
-    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2), float2(500, 100), "2", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 3f)
-    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2+200), float2(500, 100), "3", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 3f)
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2-200), float2(500, 100), "enable vsynh", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2), float2(500, 100), "disable vsynh", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2+200), float2(500, 100), "Back to main menu", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
 def select_levels_menu()
 
     close_menu()
@@ -92,10 +93,16 @@ def select_player_menu()
 def game_over_menu()
     close_menu()
     is_menu = true
-    create_back_menu(float2(250, 150), float2(WIDTH_SCREEN-500, HEIGHT_SCREEN-300), BACK_MENU_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10,10))
-    create_label("GAMEOVER", "mono", 100f, float2(float(WIDTH_SCREEN)/2f, 100f))
+    
+    create_back_menu(float2(250, 100), float2(WIDTH_SCREEN-500, HEIGHT_SCREEN-200), BACK_MENU_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10,10))
+    
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2-200), float2(500, 100), "Restart", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2), float2(500, 100), "Back to main menu", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
+    create_button_menu(float2(WIDTH_SCREEN/2, HEIGHT_SCREEN/2+200), float2(500, 100), "Exit", BUTTON_MENU_COLOR, BUTTON_MENU_CROSS_COLOR, BUTTON_MENU_CLICK_COLOR, BUTTON_MENU_OUTLINE_COLOR, 0f, float2(10, 10))
+
+    create_label("GAMEOVER", "mono", 100f, float2(float(WIDTH_SCREEN)/2f, 90f))
 def create_bar(pos: float2; elements: array<Type_Player_Bar>; count_window: int; scale_window: float)
-    create_label(name_current_level, "mono", 45f, float2(100f, 300f), false)
+    create_label(name_current_level, "mono", 45f, float2(float(WIDTH_SCREEN)/2f, 100f), true)
     if get_key_down(VK_D)
         selected++
     elif get_key_down(VK_A)
@@ -266,8 +273,15 @@ def button_click(var b: Button_menu)
     if tag == "Restart"
         load_level(current_level)
     if tag == "Settings"
-        //settings_menu()
+        settings_menu()
+    if tag == "enable vsynh"
+        set_vsync_enabled(true)
+    if tag == "disable vsynh"
+        set_vsync_enabled(false)
+    if tag == "Level select"
         select_levels_menu()
+    if tag == "Back to main menu"
+        main_menu()
     if tag == "Levels"
         //settings_menu()
         if b.value >= 0
