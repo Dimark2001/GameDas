@@ -51,5 +51,5 @@ def draw
     disable_alpha_blend()
     set_font_name("mono")
     set_font_size(25f)
-    text_out(10f, 10f, "{fps_counter}", 0x0)
+    text_out(10f, 10f, "{fps_counter}", 0x00ff00)
     return
