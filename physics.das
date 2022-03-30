@@ -178,8 +178,11 @@ def update_player(var player: Player; dt: float)
     player.collider.topLeftCorner = player.pos
     player.collider.bottomRightCorner = player.pos+float2(player.width, player.height)
     player.pos.x += player.velocity.x*dt
-    player.pos.y += player.velocity.y*dt
-
+    var max_velocity = 700f
+    if player.velocity.y < 700f
+        player.pos.y += player.velocity.y*dt
+    else
+        player.pos.y += max_velocity*dt
     if player.velocity.x > 0f
         player.flip = false
     if player.velocity.x < 0f

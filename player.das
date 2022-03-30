@@ -5,6 +5,7 @@ require menu
 
 def dead_player(var p: Player)
     if spawn_station.open
+        flip_restart(p)
         var k: int
         create_wall(player.pos, float2(player.height, player.width), 0xffff0077, dead)
         restart_player(p)
