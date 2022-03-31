@@ -28,6 +28,9 @@ let
     GRASS_WALL_IMAGE <- create_managed_image("Sprites/grass5.png")
     GRASS_WALL_IMAGE8 <- create_managed_image("Sprites/grass8.png")
 
+    METAL_WALL_IMAGE <- create_managed_image("Sprites/Cupper5.png")
+    METAL_WALL_IMAGE8 <- create_managed_image("Sprites/Cupper8.png")
+
     BUTTON_CLOSE_IMAGE <- create_managed_image("Sprites/Spawn.png")
     LAVA_WALL_IMAGE <- create_managed_image("Sprites/Stone5.png")
     LAVA_WALL_IMAGE8 <- create_managed_image("Sprites/Stone8.png")
