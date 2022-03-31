@@ -87,6 +87,9 @@ def aplay_biom_level(b:string)
     if b == "lava"
         WALL_IMAGE = LAVA_WALL_IMAGE
         WALL_IMAGE8 = LAVA_WALL_IMAGE8
+    if b == "metal"
+        WALL_IMAGE = METAL_WALL_IMAGE
+        WALL_IMAGE8 = METAL_WALL_IMAGE8
 def create_wall(var pos: float2; scale: float2; color: uint; image: ImageHandle)
     var new_wall: Wall
     new_wall.color = color

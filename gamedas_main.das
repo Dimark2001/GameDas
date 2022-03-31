@@ -15,7 +15,7 @@ def initialize
     set_window_title("FakeLife")
     set_resolution(1575, 900)
     //set_antialiasing(4)
-    set_vsync_enabled(true)
+    set_vsync_enabled(false)
     
     //load_level(100)
     main_menu()
