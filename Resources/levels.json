@@ -33,7 +33,7 @@
   ["w","p","-","-","v","w","w","-","-","-","-","-","-","-","-","-","-","-","-","-","w"],
   ["w","v","v","v","w","w","w","v","v","v","v","v","v","v","v","v","v","v","v","v","w"]
 ],
-"level_name": "Tutorial 1:Move AD, Jump W, restart level R",
+"level_name": "Tutorial 1:Move AD, Jump Space, restart level R",
 "type_name": ["stone",""],
 "type_count": [1],
 "biom": "grass"
@@ -74,7 +74,7 @@
 ["w","v","v","v","w","w","w","w","w","w","w","w","w","w","w","w","w","w","w","w","w"]
 ],
 "level_name": "Tutorial 3:Metal Golem can swimming in lava",
-"type_name": ["metal","wood"],
+"type_name": ["metal","portal"],
 "type_count": [2,1],
 "biom": "stone"
 },

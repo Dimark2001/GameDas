@@ -9,7 +9,7 @@ require menu
 require player
 
 var
-    fps_counter:float
+    fps_counter:int
 [export]
 def initialize
     set_window_title("FakeLife")
@@ -35,7 +35,11 @@ def act(dt: float)
     
     load_menu()
         
-    fps_counter = 1.0f / dt
+    fps_counter = roundi(1.0f / dt)
+    if fps_counter > 70
+        set_vsync_enabled(true)
+    if fps_counter < 45
+        set_vsync_enabled(false)
     return
 [export]
 def draw

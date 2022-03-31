@@ -12,12 +12,12 @@ let
     BRICK_COLOR = make_color(1F,1F,1F,1F)
     PLAYER_COLOR = make_color(1F,1F,1F,1F)
     TRIGGER_COLOR = make_color(1F,1F,1F,1F)
-    SPAWN_STATION_COLOR =  make_color(0F,0F,1F,1F)
+    SPAWN_STATION_COLOR =  make_color(0F,0.5F,1F,1F)
     WHITE_COLOR =  make_color(1F,1F,1F,1F)
 
     PLAYER_IMAGE <- create_managed_image("Sprites/PlayerPortal.png")
     TRIGGER_IMAGE <- create_managed_image("Resources/ramka.png")
-    SPAWN_STATION_IMAGE <- create_managed_image("Sprites/Spawn.png")
+    SPAWN_STATION_IMAGE <- create_managed_image("Sprites/flag.png")
     EXIT_LEVEL <- create_managed_image("Sprites/portal1.png")
 
     //BACK_IMAGE <- create_managed_image("Resources/ramka.png")

@@ -64,10 +64,10 @@ def create_tilemap(level: Level; tile: string; tile_pos: float2)
     elif tile == WATER_SYMBOL
         create_trigger(global_tile_pos, scale_tile, WHITE_COLOR, "water", WATER_W_IMAGE)
     elif tile == PLAYER_SYMBOL
-        create_trigger(global_tile_pos, scale_tile*float2(1f,1f), TRIGGER_COLOR, "spawn", SPAWN_STATION_IMAGE)
+        create_trigger(global_tile_pos, scale_tile*float2(1f,1f), SPAWN_STATION_COLOR, "spawn", SPAWN_STATION_IMAGE)
         //create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "spawn", SPAWN_STATION_IMAGE)
         restart_player(player, global_tile_pos, scale_tile.x, scale_tile.y, create_array_type_player(type_name, type_count))
-        create_spawn_station(global_tile_pos, scale_tile*float2(1f,1f), TRIGGER_COLOR, create_array_type_player(type_name, type_count))
+        create_spawn_station(global_tile_pos, scale_tile*float2(1f,1f), SPAWN_STATION_COLOR, create_array_type_player(type_name, type_count))
     elif tile == TRIGGER_SYMBOL
         create_trigger(global_tile_pos, scale_tile, TRIGGER_COLOR, "jump", TRIGGER_IMAGE)
     elif tile == PORTAL_IN_SYMBOL
