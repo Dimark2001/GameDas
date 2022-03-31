@@ -14,6 +14,10 @@ var
 def initialize
     set_window_title("FakeLife")
     set_resolution(1575, 900)
+    HEIGHT_SCREEN = get_screen_height()
+    WIDTH_SCREEN = get_screen_width()
+    print("{HEIGHT_SCREEN}")
+    print("{WIDTH_SCREEN}")
     //set_antialiasing(4)
     set_vsync_enabled(false)
     
@@ -36,7 +40,7 @@ def act(dt: float)
     load_menu()
         
     fps_counter = roundi(1.0f / dt)
-    if fps_counter > 70
+    if fps_counter > 90
         set_vsync_enabled(true)
     if fps_counter < 45
         set_vsync_enabled(false)

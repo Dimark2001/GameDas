@@ -1,8 +1,7 @@
 require daslib/media
 
 let 
-    HEIGHT_SCREEN = get_screen_height()
-    WIDTH_SCREEN = get_screen_width()
+    
 
     JUMP_KEY = VK_SPACE
     MOVE_RIGHT_KEY = VK_D
@@ -72,7 +71,7 @@ let
     BUTTON_MENU_OUTLINE_COLOR = make_color(0F,0F,0F,0.8F)
     BACK_MENU_COLOR = make_color(0.7F,0.7F,0.7F,1F)
     BACK_MENU_COLOR1 = make_color(0.5F,0.3F,0.3F,1F)
-    TEXT_MENU_COLOR = make_color(0F,0F,0F,1F)
+    TEXT_MENU_COLOR = make_color(1F,1F,0F,1F)
     //--Bar
     METAL_PLAYER <- create_managed_image("Sprites/PlayerCupper.png")
     LAVA_PLAYER <- create_managed_image("Sprites/PlayerStone.png")
@@ -94,6 +93,9 @@ let
     CLOSE_SYMBOL: string = "c"
     NULL_SYMBOL: string = "-"
 var
+    HEIGHT_SCREEN = get_screen_height()
+    WIDTH_SCREEN = get_screen_width()
+    
     WALL_IMAGE: ImageHandle
     WALL_IMAGE8: ImageHandle
     rect_collider: Rect_collider
